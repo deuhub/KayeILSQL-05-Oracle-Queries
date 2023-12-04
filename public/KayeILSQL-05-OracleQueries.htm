@@ -1,0 +1,4542 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>KayeILSQL-05-Oracle Queries</title>
+
+    <meta charset="UTF-8">
+    <meta name="description" content="KayeILSQL-05-Oracle Queries">
+    <meta name="keywords" content="Kaye is Learning SQL, #kayeIsLearningSQL, 
+    Oracle Queries, #oracleQueries, 
+   ">
+    <meta name="author" content="Dicle Ertan Ülger">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        h1 {
+            color: rgb(8, 51, 143);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            page-break-before: always;
+        }
+
+        h2 {
+            color: rgb(125, 186, 0);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            page-break-before: always;
+        }
+
+        h3 {
+            color: rgb(0, 184, 224);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        h4 {
+            color: rgb(222, 59, 33);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: large;
+        }
+
+
+        h5 {
+            color: rgb(0, 196, 181);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: large;
+        }
+
+        h6 {
+            color: rgb(144, 36, 143);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: large;
+        }
+
+        p {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .note-emoji-300 {
+            font-size: 300%;
+
+        }
+
+
+        .note-bold {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+        }
+
+
+        .note-bold-italic {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .note-bold-navy {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            color: rgb(8, 51, 143);
+        }
+
+        .note-bold-navy-italic {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            color: rgb(8, 51, 143);
+            font-style: italic;
+        }
+
+        .note-bold-navy-larger {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            color: rgb(8, 51, 143);
+            font-size: larger;
+        }
+
+        .note-bold-larger {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            font-size: larger;
+        }
+
+        .note-bold-red {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: rgb(222, 59, 33);
+            font-weight: bold;
+        }
+
+        .note-bold-red-larger {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: rgb(222, 59, 33);
+            font-weight: bold;
+            font-size: larger;
+        }
+
+        .note-bold-red-italic {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: rgb(222, 59, 33);
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .note-10 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: rgb(222, 59, 33);
+            background-color: rgb(247, 181, 18);
+            padding: 30px;
+            font-weight: bold;
+        }
+
+        .note-20 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: rgb(222, 59, 33);
+            font-weight: bold;
+        }
+
+        .note-25 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: rgb(222, 59, 33);
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .note-30 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgb(247, 181, 18);
+            padding: 30px;
+            font-weight: bold;
+        }
+
+        .note-40 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgb(0, 184, 224);
+            padding: 30px;
+            font-weight: bold;
+        }
+
+        .note-50 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(0, 184, 224, 25%);
+            padding: 30px;
+            font-weight: bold;
+        }
+
+        .note-55 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(0, 184, 224, 25%);
+            padding: 30px;
+            font-weight: bold;
+            font-size: larger;
+        }
+
+        .note-60 {
+            background-color: rgb(247, 181, 18);
+            color: rgb(8, 51, 143);
+            font-size: larger;
+            font-weight: bold;
+            padding: 30px;
+        }
+
+        .note-70 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(0, 184, 224, 25%);
+            padding: 20px;
+        }
+
+        .note-75 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(0, 184, 224, 25%);
+            color: rgb(222, 59, 33);
+            padding: 30px;
+            font-weight: bold;
+            font-size: larger;
+        }
+
+        .note-80 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgb(247, 181, 18);
+            color: rgb(222, 59, 33);
+            padding: 30px;
+            font-weight: bold;
+        }
+
+
+        .note-85 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgb(247, 181, 18);
+            color: rgb(222, 59, 33);
+            padding: 30px;
+            font-weight: bold;
+            font-size: larger;
+        }
+
+        .note-jci-green {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgb(125, 186, 0);
+            padding: 30px;
+        }
+
+        .note-jci-green-3 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: larger;
+            font-weight: bold;
+            background-color: rgb(125, 186, 0);
+            padding: 30px;
+        }
+
+
+        .note-90 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(125, 186, 0, 25%);
+            padding: 30px;
+
+        }
+
+        .note-cyan-a30 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(0, 184, 224, 30%);
+            padding: 30px;
+        }
+
+        .note-95 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(0, 184, 224, 10%);
+            padding: 30px;
+        }
+
+        .note-95-a15 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(0, 184, 224, 15%);
+            padding: 30px;
+        }
+
+        .note-95-a20 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(0, 184, 224, 20%);
+            padding: 30px;
+        }
+
+        .note-95-a30 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(0, 184, 224, 30%);
+            padding: 30px;
+        }
+
+        .note-95-a30-larger {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(0, 184, 224, 30%);
+            padding: 30px;
+            font-size: larger;
+        }
+
+        .note-jci-cyan {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgb(0, 184, 224);
+            padding: 30px;
+        }
+
+        .note-jci-cyan-10 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(0, 184, 224, 10%);
+            padding: 30px;
+        }
+
+        .note-jci-cyan-larger {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgb(0, 184, 224);
+            padding: 30px;
+            font-size: larger;
+        }
+
+        .note-96 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(0, 184, 224, 10%);
+            padding: 30px;
+            font-size: larger;
+        }
+
+        .note-97 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(125, 186, 0, 10%);
+            padding: 30px;
+
+        }
+
+        .note-97-a15 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(125, 186, 0, 15%);
+            padding: 30px;
+
+        }
+
+        .note-97-a30 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(125, 186, 0, 30%);
+            padding: 30px;
+        }
+
+        .note-98 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(125, 186, 0, 10%);
+            padding: 30px;
+            font-size: larger;
+
+        }
+
+        .note-jcigreen-larger {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: rgb(125, 186, 0);
+            font-size: larger;
+            font-weight: bold;
+        }
+
+        .note-110 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: rgb(199, 15, 175);
+            font-weight: bold;
+        }
+
+        .note-115 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(199, 15, 175, 25%);
+            padding: 30px;
+            font-weight: bold;
+        }
+
+        .note-117 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(199, 15, 175, 10%);
+            padding: 30px;
+        }
+
+        .note-117-a05 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(199, 15, 175, 5%);
+            padding: 30px;
+        }
+
+
+        .note-117-a10 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(199, 15, 175, 10%);
+            padding: 30px;
+        }
+
+        .note-117-a15 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(199, 15, 175, 15%);
+            padding: 30px;
+        }
+
+        .note-117-a30 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(199, 15, 175, 30%);
+            padding: 30px;
+        }
+
+        .note-117-a50 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(199, 15, 175, 50%);
+            padding: 30px;
+        }
+
+        .note-117-a70 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(199, 15, 175, 70%);
+            padding: 30px;
+        }
+
+        .note-117-larger {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: rgb(199, 15, 175);
+            font-size: larger;
+            font-weight: bold;
+        }
+
+        .note-200 {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .note-210 {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+
+
+        .note-300 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgb(102, 99, 102);
+            color: rgb(245, 245, 245);
+            padding: 30px;
+            font-weight: bold;
+        }
+
+
+        .note-charcoal-larger {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: rgb(102, 99, 102);
+            font-size: larger;
+            font-weight: bold;
+        }
+
+        .note-charcoal {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgb(102, 99, 102);
+            padding: 30px;
+        }
+
+        .note-charcoal-a70 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(102, 99, 102, 70%);
+            padding: 30px;
+        }
+
+        .note-charcoal-a50 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(102, 99, 102, 50%);
+            padding: 30px;
+        }
+
+        .note-charcoal-a30 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(102, 99, 102, 30%);
+            padding: 30px;
+        }
+
+        .note-charcoal-a30-large {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(102, 99, 102, 30%);
+            padding: 30px;
+            font-size: larger;
+            font-weight: bold;
+        }
+
+        .note-solaryellow-a30 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(247, 181, 18, 30%);
+            padding: 30px;
+        }
+
+        .note-brightgreen-larger {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgb(196, 219, 13);
+            font-size: larger;
+            font-weight: bold;
+            padding: 30px;
+        }
+
+        .note-brightgreen {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgb(196, 219, 13);
+            padding: 30px;
+        }
+
+        .note-brightgreen-a70 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(196, 219, 13, 70%);
+            padding: 30px;
+        }
+
+        .note-brightgreen-a50 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(196, 219, 13, 50%);
+            padding: 30px;
+        }
+
+        .note-brightgreen-a30 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(196, 219, 13, 30%);
+            padding: 30px;
+        }
+
+        .note-brightgreen-a10 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(196, 219, 13, 10%);
+            padding: 30px;
+        }
+
+        .note-brightgreen-a05 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(196, 219, 13, 5%);
+            padding: 30px;
+        }
+
+        .note-oceangreen-larger {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(0, 196, 181);
+            font-size: larger;
+            font-weight: bold;
+            padding: 30px;
+        }
+
+        .note-oceangreen {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(0, 196, 181);
+            padding: 30px;
+        }
+
+        .note-oceangreen-a05 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(0, 196, 181, 5%);
+            padding: 30px;
+        }
+
+        .note-oceangreen-a10 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(0, 196, 181, 10%);
+            padding: 30px;
+        }
+
+        .note-oceangreen-a30 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(0, 196, 181, 30%);
+            padding: 30px;
+        }
+
+        .note-oceangreen-a50 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(0, 196, 181, 50%);
+            padding: 30px;
+        }
+
+        .note-oceangreen-a70 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: rgba(0, 196, 181, 70%);
+            padding: 30px;
+        }
+
+
+        .note-radient-red-larger {
+            background-color: rgb(168, 3, 79);
+            color: rgb(245, 245, 245);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: larger;
+            font-weight: bold;
+            padding: 30px;
+        }
+
+        .note-radient-red {
+            background-color: rgb(168, 3, 79);
+            color: rgb(245, 245, 245);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            padding: 30px;
+        }
+
+        .note-radient-red-a70 {
+            background-color: rgba(168, 3, 79, 70%);
+            color: rgb(245, 245, 245);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            padding: 30px;
+        }
+
+        .note-radient-red-a50 {
+            background-color: rgba(168, 3, 79, 50%);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            padding: 30px;
+        }
+
+        .note-radient-red-a30 {
+            background-color: rgba(168, 3, 79, 30%);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            padding: 30px;
+        }
+
+        .note-radient-red-a10 {
+            background-color: rgba(168, 3, 79, 10%);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            padding: 30px;
+        }
+
+        .note-radient-red-a05 {
+            background-color: rgba(168, 3, 79, 5%);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            padding: 30px;
+        }
+
+        ul {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            line-height: 30px;
+        }
+
+        ol {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            line-height: 30px;
+        }
+
+        dl {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            line-height: 30px;
+        }
+
+        dt {
+            font-size: larger;
+        }
+
+        #t20 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+
+        }
+
+        table {
+            width: 100%;
+            text-align: left;
+            font-size: small;
+        }
+
+        table,
+        th,
+        td {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+
+        div {
+            overflow-x: auto;
+
+        }
+
+        figcaption {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        p.lh2 {
+            line-height: 2;
+        }
+
+        ul.lh3 {
+            line-height: 3;
+        }
+
+
+        #table_and table,
+        th,
+        td {
+            padding: 30px;
+            text-align: center;
+            border-collapse: collapse;
+            font-size: larger;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <h1>KayeILSQL-05-Oracle Queries</h1>
+    <p></p>
+    <!--    <img src="deu.png" style="max-width:100% ;" height="auto" alt="just me"> -->
+
+    <p></p>
+    <div class="note-55">
+        <p style="font-size: larger;">Contents</p>
+    </div>
+
+
+    <!-- -->
+    <div class="note-95">
+        <p style="font-size: larger; font-weight: bold;">
+            <a href="#based_on"> Based On </a>
+        </p>
+
+        <ul>
+            <li><a href="#based_on_experience">Based On &mdash; Experience</a> </li>
+            <li><a href="#based_on_data_model">Based On &mdash; European Parliament as Data Model</a> </li>
+            <li><a href="#based_on_references">Based On &mdash; Oracle Database as RDBMS</a> </li>
+        </ul>
+        <p style="font-size: larger; font-weight: bold;">
+            <a href="#concepts">SELECT Statement Concepts </a>
+        </p>
+        <ul>
+            <li><a href="#concepts_proj">PROJECTION</a></li>
+            <li><a href="#concepts_sel">SELECTION</a></li>
+            <li><a href="#concepts_join">JOIN</a></li>
+        </ul>
+
+        <p style="font-size: larger; font-weight: bold;">
+            <a href="#basic_syntax">SELECT Statement Basic Syntax </a>
+        </p>
+        <p style="font-size: larger; font-weight: bold;">
+            <a href="#all_rows_cols">SELECT All Rows and All Columns </a>
+        </p>
+        <p style="font-size: larger; font-weight: bold;">
+            <a href="#struct"> DESCRIBE the Structure of a Table </a>
+        </p>
+        <p style="font-size: larger; font-weight: bold;">
+            <a href="#choice_cols">SELECT Only COLUMNS of Your Choice </a>
+        </p>
+        <p style="font-size: larger; font-weight: bold;">
+            <a href="#order_cols">Order of COLUMNS </a>
+        </p>
+        <p style="font-size: larger; font-weight: bold;">
+            <a href="#lex_rule">Lexical Rules </a>
+        </p>
+        <ul>
+            <li><a href="#lex_mean">What does Lexical mean?</a></li>
+            <li><a href="#lex_same">These SQL Statements are treated the same</a></li>
+            <li><a href="#lex_case">Case</a></li>
+            <li><a href="#lex_stmt_end">Statement Terminator</a></li>
+        </ul>
+        <p style="font-size: larger; font-weight: bold;">
+            <a href="#arith_ops">Arithmetic Operators in SELECT Statement </a>
+        </p>
+
+        <p style="font-size: larger; font-weight: bold;">
+            <a href="#arith_ops_prio">Arithmetic Operator Priority </a>
+        </p>
+        <p style="font-size: larger; font-weight: bold;">
+            <a href="#arith_ops_null">NULL Values in Arithmetic Expressions </a>
+        </p>
+        <ul>
+            <li><a href="#arith_ops_null_def">Definition of a NULL Value</a></li>
+            <li><a href="#arith_ops_null_ex">Example &mdash; NULL Value in Arithmetic Expressions</a></li>
+        </ul>
+
+        <p style="font-size: larger; font-weight: bold;">
+            <a href="#col_alias">Using COLUMN Aliases </a>
+        </p>
+        <p style="font-size: larger; font-weight: bold;">
+            <a href="#concat_opr">Using the CONCATENATION Operator </a>
+        </p>
+        <p style="font-size: larger; font-weight: bold;">
+            <a href="#quot_mark_single">Displaying a Single QUOTATION Mark</a>
+        </p>
+        <ul>
+            <li><a href="#quot_marks_two">Use Two Single QUOTATION Marks</a> </li>
+            <li><a href="#quot_oper">Use the QUOTE OPERATOR q</a> </li>
+        </ul>
+
+        <p style="font-size: larger; font-weight: bold;">
+            <a href="#distinct_cl">DISTINCT Clause </a>
+        </p>
+        <ul>
+            <li><a href="#distinct_cl_single">SINGLE COLUMN with DISTINCT </a> </li>
+            <li><a href="#distinct_cl_multiple">MULTIPLE COLUMNS with DISTINCT </a> </li>
+        </ul>
+        <p style="font-size: larger; font-weight: bold;">
+            <a href="#where_cl">WHERE Clause </a>
+        </p>
+        <ul>
+            <li><a href="#where_cl_eq">Comparison Operator = Equal To </a></li>
+            <li><a href="#where_cl_leq">Comparison Operator &#60;= Less Than or Equal To </a></li>
+            <li><a href="#where_cl_lt">Comparison Operator &#60; Less Than </a></li>
+            <li><a href="#where_cl_neq">Comparison Operator &#60;&#62; Not Equal To </a></li>
+            <li><a href="#where_cl_betw">BETWEEN Condition</a></li>
+            <li><a href="#where_cl_in">IN Condition</a></li>
+            <li><a href="#where_cl_like">LIKE Condition</a></li>
+            <li><a href="#where_cl_logic">Conditions with LOGICAL Operators</a></li>
+
+
+            <ul>
+                <li><a href="#logi_true">When do the Logical Operators return TRUE ?</a> </li>
+                <li><a href="#logi_nulls">NULLs in Conditions</a> </li>
+                <ul>
+                    <li><a href="#logi_null_def">Definition of NULL &mdash; Again &#128519; </a> </li>
+                    <li><a href="#logi_null_compare">NULL Comparison Conditions</a> </li>
+                    <li><a href="#logi_null_unknown">UNKNOWN(NULL) and FALSE</a> </li>
+                    <li><a href="#logi_nul_exp">Example with NULLS</a> </li>
+                </ul>
+
+                <li><a href="#logi_and">AND Operator</a> </li>
+                <ul>
+                    <li><a href="#logi_and_truth">AND Truth Table</a> </li>
+                    <li><a href="#logi_and_strength">Order of Strength for AND</a> </li>
+                </ul>
+                <li><a href="#logi_or">OR Operator</a> </li>
+                <ul>
+                    <li><a href="#logi_or_truth">OR Truth Table</a> </li>
+                    <li><a href="#logi_or_strenth">Order of Strength for OR</a> </li>
+                </ul>
+                <li><a href="#logi_not">NOT Operator</a> </li>
+                <ul>
+                    <li><a href="#logi_not_truth">NOT Truth Table</a></li>
+                    <li><a href="#logi_not_ex">Example of NOT</a></li>
+                    <li><a href="#logi_not_ex_2">Example 2 of NOT</a></li>
+                    <li><a href="#logi_not_ex_3">Example 3 of NOT</a></li>
+                    <li><a href="#logi_not_ordinary">NOT Ordinary</a></li>
+                </ul>
+
+            </ul>
+
+            <li><a href="#where_cl_prio">Operator Priority</a></li>
+            <ul>
+                <li><a href="#where_cl_prio_ex1">Example 1 on Operator Priority</a></li>
+                <li><a href="#where_cl_prio_ex2">Example 2 on Operator Priority</a></li>
+                <li><a href="#where_cl_q">Question on what we have just learned</a></li>
+            </ul>
+
+        </ul>
+        <p style="font-size: larger; font-weight: bold;">
+            <a href="#order_by_cl">ORDER BY Clause </a>
+        </p>
+        <ul>
+            <li><a href="#order_by_mean_asc">Meaning of ASCENDING</a></li>
+            <li><a href="#order_by_mean_desc">Meaning of DESCENDING</a></li>
+            <li><a href="#order_by_cl_asc">ORDER BY ASCENDING</a></li>
+            <li><a href="#order_by_cl_desc">ORDER BY DESCENDING</a></li>
+            <li><a href="#order_by_cl_cn">Sorting by Column Order Number</a></li>
+            <li><a href="#order_by_cl_ca">Sorting by Column Alias</a></li>
+            <li><a href="#order_by_cl_mc">Sorting by Multiple Columns</a></li>
+            <li><a href="#order_by_cl_q">Question on what we have just learned</a></li>
+        </ul>
+
+        <!-- -->
+        <p style="font-size: larger; font-weight: bold;">
+            <a href="#references"> References </a>
+        </p>
+    </div>
+    <p></p>
+
+
+
+
+
+    <h2 id="based_on">Based On</h2>
+
+    <h3 id="based_on_experience">Based On &mdash; Experience</h3>
+    <div class="note-charcoal-a30-large">
+
+
+        <p>The contents of this work are based on;
+        </p>
+    </div>
+    <p>
+
+    </p>
+
+
+    <ul class="note-117">
+        <li>the SQL Courses I delivered to Oracle Customers in
+            Oracle Turkey, during 1995-2002,
+        </li>
+        <li>the SQL Courses I delivered to the students of
+            the evening programs
+            in Bahçeşehir University,
+            Istanbul, during 2007-2009,</li>
+        <li>the in-house SQL Courses I delivered to my colleagues
+            in Johnson Controls, Istanbul Technology Center,
+            during 2009-2012,</li>
+        <li>the in-house SQL Courses I delivered to my colleagues
+            in Toyzz Shop HQ, Şekerpınar Kocaeli, during 2014-2021,
+        </li>
+        <li>most of my career in IT where I used hands-on SQL as
+            a base of the development tools starting from 1987 &mdash;
+            30 years of lapse time approximately.</li>
+    </ul>
+
+
+
+    <h3 id="based_on_data_model">Based On &mdash; European Parliament as Data Model</h3>
+
+    <p> This text on SQL is based on the
+        <span class="note-bold-navy">EP-European Parliament </span>
+        as Data Model.
+    </p>
+
+
+
+
+
+
+    <span class="note-bold"> </span>
+    <span class="note-bold-navy"> </span>
+    <span class="note-bold-italic"> </span>
+    <span class="note-bold-navy-italic"> </span>
+
+    <p></p>
+    <p></p>
+    <p></p>
+
+    <div class="note-95">
+        <span class="note-bold"> </span>
+        <span class="note-bold-navy"> </span>
+        <span class="note-bold-italic"> </span>
+        <span class="note-bold-navy-italic"> </span>
+        <p>The
+            <span class="note-bold-navy">European Parliament (EP)</span>
+            is the parliamentary institution of the
+            <span class="note-bold">European Union (EU)</span>.
+        </p>
+        <p>
+            The European Parliament is elected by the citizens of the European Union to represent their interests.</p>
+        <p> Its origins go back to the 1950s and the founding Treaties.
+            Since 1979 its members have been directly elected by the citizens of the EU.</p>
+
+    </div>
+    <p></p>
+    <div class="note-97">
+        <p>Elections are held every five years, and every EU citizen is entitled to vote, and to stand as a candidate,
+            wherever they live in the EU.
+            Parliament thus expresses the democratic will of the
+            European Union's nearly 500 million citizens and
+            it represents their interests in discussions with the other EU institutions. </p>
+
+    </div>
+
+    <p></p>
+
+    <p></p>
+
+    <div class="note-jci-green-3">
+        <p>Please Note:</p>
+        <p>
+        <ul style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: larger;
+            font-weight: bold;
+            ">
+            <li> The European Parliament model and data used in this SQL text,
+                are based on the elections which were held in June 2004.</li>
+            <li>The European Parliament of 2004 elections had 785 members from all 27 EU countries.</li>
+        </ul>
+        </p>
+    </div>
+    <p></p>
+
+    <p></p>
+    <div class="note-95">
+        <p>The sources for the data, which are all freely obtainable from the European Union website,
+            and from several leaflets of the EU institutions,
+            are listed in the
+            <a href="#references"> References</a>
+            section.
+        </p>
+
+        <span class="note-bold"> </span>
+        <span class="note-bold-navy"> </span>
+        <span class="note-bold-italic"> </span>
+        <span class="note-bold-navy-italic"> </span>
+        <p>These sources are used to create
+            <span class="note-bold-navy-italic">the fictitious Business Narrative</span>
+
+            of the
+            <span class="note-bold">"Data Modelling and Normalization"</span>
+            Chapter.
+        </p>
+        <p>We called this
+            <span class="note-bold-navy">Business Narrative</span>;
+            <span class="note-bold">"the Story of the European Union"</span>
+            which explains about the EU and EP,
+            for purposes of Data Modeling.
+        </p>
+
+  <!--     <p>You can access our
+            <span class="note-bold-navy">Business Narrative</span>,
+            <span class="note-bold">the Story of the European Union</span>
+            <a href="kayeILSQL-StoryEuropeanUnion.htm" target="_blank">here</a>.
+        </p>
+
+-->  
+<p>
+    <span class="note-bold">The Story of the European Union</span> is the last Chapter
+of <b> Kaye is Learning SQL</b>.
+</p>
+
+    </div>
+
+    <p></p>
+    <h3 id="based_on_references">Based On &mdash; Oracle Database as RDBMS</h3>
+
+    <p> This text on SQL is based on the
+        <span class="note-bold-navy">Oracle Database</span>
+        as RDBMS &mdash; Relational Database Management System.
+    </p>
+
+    <p>Although the <b>SQL Statements</b> used in this text, apply specifically
+        to the Oracle Database implementation of SQL,
+        they are generally compatible with
+        many other RDBMS SQL implementations.</p>
+
+    <p> The knowledge in the following sections are based
+        on my personal work experience, as well as on
+        several Oracle Documentation,
+        which are freely downloadable from Oracle websites.
+    </p>
+    <p>You can find a list of these documents in the
+        <a href="#references"> References</a>.
+    </p>
+    <p>The name of the documents may change in time.</p>
+    <p>
+        <span class="note-bold-navy">
+            You can refer to the Oracle Documentation if you need more detailed
+            information on any of the topics in this text.</span>
+    </p>
+    <p>Any errors present, are mine.</p>
+    <div class="note-97">
+
+        <img src="../images/c5/garden-9983.jpg" style="max-width:100% ;" height="auto" alt="Breath of Fresh Air">
+
+        <p> </p>
+
+    </div>
+    <p></p>
+
+    <h2 id="concepts">SELECT Statement Concepts</h2>
+
+    <p>An SQL SELECT statement retrieves information
+        from the database. </p>
+    <h3 id="concepts_proj">PROJECTION</h3>
+    <div class="note-95">
+
+        <p>With an SQL statement,
+            you can select <b>columns of your choice</b> from a table.</p>
+        <p>You can choose <b>all the columns</b> or
+            <b>some of the columns</b> of a table.
+        </p>
+        <p>This is called the
+            <b>PROJECTION</b> capability of an SQL
+            SELECT statement.
+        </p>
+
+    </div>
+    <p></p>
+    <div class="note-97">
+
+        <p> </p>
+        <figure>
+            <figcaption style="font-weight: bold;">
+                PROJECTION Operation on a TABLE
+            </figcaption>
+            <img src="../images/c5/sel_01.jpg" style="max-width: 100%; 
+            height: auto;" alt="PROJECTION Operation on a TABLE">
+
+        </figure>
+    </div>
+    <p></p>
+    <div class="note-117">
+
+        <p>In the example above, only two columns of the table are
+            chosen:
+        <ul>
+            <li><b>COUNTRY_NAME</b></li>
+            <li><b>GDP_PPS</b></li>
+        </ul> <b></b>
+        </p>
+        <p>The user will see the data in these two columns only.</p>
+        <p>This is the
+            <b>PROJECTION</b> capability of an SQL SELECT statement.
+        </p>
+
+        <p><b>PROJECTION</b> takes <b>Vertical Slices</b> from a table.</p>
+
+    </div>
+    <p></p>
+
+    <div class="note-95">
+
+        <p> </p>
+        <figure>
+            <figcaption style="font-weight: bold;">
+                PROJECTION takes VERTICAL SLICES from a TABLE
+            </figcaption>
+            <img src="../images/c5/sel_02.jpg" style="max-width: 100%; 
+            height: auto;" alt="PROJECTION Operation on a TABLE">
+
+        </figure>
+    </div>
+    <p></p>
+
+    <h3 id="concepts_sel">SELECTION</h3>
+    <div class="note-95">
+        <b></b>
+        <p>With an SQL statement you can select
+            <b>rows of your choice</b> from a table.
+        </p>
+        <p>You can choose <b>all the rows </b> or
+            <b>some of the rows</b> of a table.
+        </p>
+        <p>This is called the <b>SELECTION</b> capability of
+            an SQL SELECT statement. </p>
+    </div>
+    <p></p>
+    <div class="note-97">
+
+        <p> </p>
+        <figure>
+            <figcaption style="font-weight: bold;">
+                SELECTION Operation on a TABLE
+            </figcaption>
+            <img src="../images/c5/sel_03.jpg" style="max-width: 100%; 
+            height: auto;" alt="SELECTION Operation on a TABLE">
+
+        </figure>
+    </div>
+    <p></p>
+    <div class="note-117">
+
+        <p>In the example above, only some of the rows are chosen.</p>
+        <p> These are the rows where the <b>STATUS</b> column
+            has the value <b>'C'</b>.</p>
+        <p>The user will only see the data in these rows. </p>
+        <p>This is the
+            <b>SELECTION</b> capability of an SQL SELECT statement.
+        </p>
+        <p><b>SELECTION</b> takes <b>Horizontal Slices</b> from a table. </p>
+
+    </div>
+    <p></p>
+
+    <div class="note-95">
+
+        <p> </p>
+        <figure>
+            <figcaption style="font-weight: bold;">
+                SELECTION takes HORIZONTAL SLICES from a TABLE
+            </figcaption>
+            <img src="../images/c5/sel_04.jpg" style="max-width: 100%; 
+            height: auto;" alt="SELECTION Operation on a TABLE">
+
+        </figure>
+    </div>
+    <p></p>
+
+
+
+    <h3 id="concepts_join">JOIN</h3>
+
+    <div class="note-95">
+
+        <p>With an SQL statement you can select data that is stored in
+            <b>more than one table</b> in the database by joining these tables.
+        </p>
+        <p>This is called the <b>JOIN</b> capability of an SQL SELECT statement.</p>
+        <p> </p>
+        <p> </p>
+
+
+    </div>
+    <p></p>
+    <div class="note-97">
+        <figure>
+            <figcaption style="font-weight: bold;">
+                JOIN Operation &#8212; Primary Key
+            </figcaption>
+            <img src="../images/c5/sel_08.jpg" style="max-width: 100%; 
+            height: auto;" alt="JOIN Operation. Primary Key of a TABLE">
+
+        </figure>
+        <p> </p>
+        <figure>
+            <figcaption style="font-weight: bold;">
+                JOIN Operation &#8212; Foreign Key
+            </figcaption>
+            <img src="../images/c5/sel_09.jpg" style="max-width: 100%; 
+            height: auto;" alt="JOIN Operation. Foreign Key of a TABLE">
+
+        </figure>
+    </div>
+    <p></p>
+    <div class="note-117">
+
+        <p>Tables are joined on the
+            <b>Columns with the Same Domain</b>
+            &#8212; generally a
+            <b>Foreign Key</b> to <b>Primary Key</b> Relationship.
+        </p>
+        <p> </p>
+        <p> </p>
+
+    </div>
+    <p></p>
+    <div class="note-95">
+
+        <p> </p>
+        <figure>
+            <figcaption style="font-weight: bold;">
+                JOIN Operation &#8212; table COUNTRIES and table MEPS
+            </figcaption>
+            <img src="../images/c5/sel_10.jpg" style="max-width: 100%; 
+            height: auto;" alt="JOIN Operation on two TABLEs">
+
+        </figure>
+    </div>
+    <p></p>
+    <div class="note-97">
+        <b></b>
+        <span class="note-bold-red"></span>
+        <p><b>JOINING</b> the two tables <span class="note-bold-red">COUNTRIES </span>
+            and <b>MEPS</b>
+            on their <span class="note-bold-red">Primary Key(COUNTRY_ID)</span>
+            and <b>Foreign Key(COUNTRY_ID)</b> respectively,
+            enabled us to include the <span class="note-bold-red">"COUNTRY_NAME"</span>
+            column of the <span class="note-bold-red">COUNTRIES</span> table
+            in the <b>Result Set of the Query</b>,
+            as well as columns from the <b>MEPS</b> table.
+        </p>
+
+    </div>
+    <p></p>
+    <p></p>
+    <div class="note-117">
+
+        <p>This is how the <b>JOIN Operation</b> in an
+            <b>SQL SELECT Statement</b> works.
+        </p>
+
+    </div>
+    <p></p>
+    <h2 id="basic_syntax">SELECT Statement Basic Syntax</h2>
+    <div class="note-95">
+
+        <p> </p>
+        <pre style="font-size:larger ;">
+SELECT  * | column_name | expression  [ alias ] 
+FROM    table_name;
+</pre>
+
+    </div>
+    <p></p>
+    <div class="note-97">
+
+        <p><b>[ alias ]</b> which is in square brackets, is optional. </p>
+        <p>An <b>alias</b> names a column heading.</p>
+    </div>
+    <p></p>
+
+    <h2 id="all_rows_cols">SELECT All Rows and All Columns</h2>
+    <div class="note-95">
+
+        <p>The statement below selects <b>all rows and all columns </b>
+            in the table <b>EU_INSTITUTES</b>. </p>
+
+
+
+    </div>
+    <p></p>
+
+    <div class="note-charcoal-a30">
+        <p></p>
+        <pre style="font-size:larger ;">
+SELECT * FROM EU_INSTITUTES;
+</pre>
+    </div>
+    <p></p>
+
+    <div class="note-97">
+
+        <p> </p>
+        <figure>
+            <figcaption style="font-weight: bold;">
+                SELECT all rows and all columns &#8212; *
+            </figcaption>
+            <img src="../images/c5/eu_institutes_01.jpg" style="max-width: 100%; 
+            height: auto;" alt="SELECT all rows and all columns, use *.">
+
+        </figure>
+
+        <figure>
+            <figcaption style="font-weight: bold;">
+                SELECT all rows and all columns &#8212; *
+            </figcaption>
+            <img src="../images/c5/eu_institutes_02.jpg" style="max-width: 100%; 
+            height: auto;" alt="SELECT all rows and all columns, use *.">
+
+        </figure>
+
+    </div>
+    <p></p>
+    <div class="note-117">
+
+        <p>The <b>asterisk(*)</b> is used to display
+            <b>all rows and all columns</b>.
+        </p>
+
+    </div>
+    <p></p>
+
+    <div style="font-size: 48px ; font-weight: bold;">
+        <p>&#42;</p>
+    </div>
+    <div class="note-95">
+
+        <p>You can also retrieve <b>the same data</b> by listing
+            <b>all the column names</b>
+            in the table:
+        </p>
+        <p>Below is the code selecting all the columns
+            from <b>EU_INSTITUTES</b>.
+        </p>
+
+
+    </div>
+    <p></p>
+
+    <div class="note-charcoal-a30">
+        <p></p>
+        <pre style="font-size: larger;">
+SELECT INSTITUTE_ID,
+    INSTITUTE_CODE,
+    INSTITUTE_NAME,
+    ROLE,
+    MEMBERS,
+    TERM_OF_OFFICE,
+    MEETINGS,
+    ADDRESS,
+    TEL,
+    INTERNET
+FROM EU_INSTITUTES;
+</pre>
+    </div>
+    <p></p>
+
+
+    <div class="note-97">
+
+        <p> </p>
+        <figure>
+            <figcaption style="font-weight: bold;">
+                SELECT all rows and all columns &#8212; list all columns.
+            </figcaption>
+            <img src="../images/c5/eu_institutes_03.jpg" style="max-width: 100%; 
+            height: auto;" alt="SELECT all rows and all columns.">
+
+        </figure>
+    </div>
+    <p></p>
+
+    <h2 id="struct">DESCRIBE the Structure of a Table</h2>
+    <div class="note-95">
+        <p>The structure of a table can be displayed by the
+            <b>DESCRIBE</b> command.
+        </p>
+        <p>To find out;
+        <ul>
+            <li>the <b>"names"</b> of the columns</li>
+            <li>the <b>"datatypes"</b> of the columns</li>
+            <li>whether a column is <b>"mandatory"</b> or <b>"optional"</b></li>
+        </ul>
+        the <b>DESCRIBE</b> command, or
+        <b>DESC</b> which is its shortcut, is used.
+        <p> </p>
+        <p>Below is an example in SQL Developer, for the table <b>EU_INSTITUTES</b>. </p>
+
+    </div>
+    <p></p>
+    <div class="note-97">
+
+        <p> </p>
+        <figure>
+            <figcaption style="font-weight: bold;">
+                DESCRIBE table EU_INSTITUTES.
+            </figcaption>
+            <img src="../images/c5/describe_1.jpg" style="max-width: 100%; 
+            height: auto;" alt="DESCRIBE table EU_INSTITUTES.">
+
+        </figure>
+    </div>
+    <p></p>
+    <p></p>
+
+    <div class="note-117">
+        <p>Let's have a look at the details marked with rectangles:</p>
+        <img src="../images/c5/desc_col_02.jpg" style="max-width: 100%; 
+        height: auto;" alt="DESCRIBE table EU_INSTITUTES.">
+
+        <ul>
+            <li>the <b>"Name"</b> of the column is <b>INSTITUTE_ID</b>. </li>
+            <li>the <b>"Null?"</b> column has the value <b>NOT NULL</b>,
+                hence the column <b>INSTITUTE_ID</b> is <b>"mandatory"</b>.</li>
+            <li>the <b>"Type"</b> column has the value <b>NUMBER(10)</b>,
+                hence its datatype is <b>NUMBER</b>. </li>
+        </ul>
+    </div>
+    <p></p>
+    <img src="../images/c5/mount_flow_01.jpeg" style="max-width: 100%; 
+height: auto;" alt="Beautiful flowers on rocks.">
+    <p></p>
+    <div class="note-117">
+
+        <p>Here is another example of the <b>DESCRIBE</b> command,
+            this time on the column <b>MEMBERS</b>.</p>
+        <img src="../images/c5/desc_col_03.jpg" style="max-width: 100%; 
+height: auto;" alt="DESCRIBE table EU_INSTITUTES.">
+        <ul>
+            <li>the <b>"Name"</b> of the column is <b>MEMBERS</b>. </li>
+            <li>the <b>"Null?"</b> column has <b> No Value </b>,
+                hence the column <b>MEMBERS</b> is <b>"optional"</b>.</li>
+            <li>the <b>"Type"</b> column has the value <b>VARCHAR2(200)</b>,
+                hence its datatype is <b>Character (Variable Character)</b>. </li>
+        </ul>
+
+
+    </div>
+    <p></p>
+
+    <div class="note-95">
+        <p>We can also use the key combination <b>(Shift + Function + F4)</b> when
+            we are on the table name <b>EU_INSTITUTES</b>,
+            to describe the table.
+        </p>
+        <p><b>(Shift + Function + F4)</b></p>
+        <p>When we press <b>Shift + Function + F4</b> keys,
+            a pop-up window appears as seen below.
+        </p>
+        <p><b>Note: </b> The keys might differ from one tool to another. </p>
+    </div>
+    <p></p>
+    <p></p>
+    <div class="note-97">
+
+        <p> </p>
+        <figure>
+            <figcaption style="font-weight: bold;">
+                "Columns Tab" of the DESCRIBE pop-up window for table EU_INSTITUTES.
+            </figcaption>
+            <img src="../images/c5/desc_1.jpg" style="max-width: 100%; 
+            height: auto;" alt="DESCRIBE table EU_INSTITUES (Columns Tab).">
+
+        </figure>
+    </div>
+    <p></p>
+
+    <p></p>
+    <div class="note-97">
+
+        <p> </p>
+        <figure>
+            <figcaption style="font-weight: bold;">
+                "Constraints Tab" of the DESCRIBE pop-up window for table EU_INSTITUTES.
+            </figcaption>
+            <img src="../images/c5/desc_2.jpg" style="max-width: 100%; 
+            height: auto;" alt="DESCRIBE table EU_INSTITUTES (Constraints Tab).">
+
+        </figure>
+    </div>
+    <p></p>
+
+    <h2 id="choice_cols">SELECT Only COLUMNS of Your Choice</h2>
+    <div class="note-95">
+
+        <p>Now that we can find out which columns the table has using
+            the <b>DESCRIBE</b> command,
+            we can choose the columns that we want to SELECT.</p>
+        <p>Here is an example.</p>
+        <pre style="font-size: larger;">
+SELECT INSTITUTE_ID,
+INSTITUTE_NAME,
+ROLE,
+INTERNET
+FROM EU_INSTITUTES;
+</pre>
+    </div>
+    <p></p>
+
+    <div class="note-97">
+        <figcaption><b>SELECT columns of your choice.</b></figcaption>
+        <img src="../images/c5/cols_your_choice_01.jpg" style="max-width: 100%; 
+        height: auto;" alt="SELECT columns of your choice.">
+
+        <p> </p>
+
+    </div>
+    <p></p>
+
+    <h2 id="order_cols">Order of COLUMNS</h2>
+    <div class="note-95">
+
+        <p>You can SELECT Columns from a table in any order you want. </p>
+        <p>You can change the SELECT Statement above as follows,
+            to alter the order of the columns:</p>
+        <pre style="font-size: larger;">
+SELECT INSTITUTE_NAME, 
+        INTERNET,
+        ROLE,
+        INSTITUTE_ID
+FROM EU_INSTITUTES;
+</pre>
+    </div>
+    <p></p>
+    <div class="note-97">
+        <figcaption><b>Order of columns may change.</b></figcaption>
+        <img src="../images/c5/col_order_01.jpg" style="max-width: 100%; height: auto;" alt="Order of columns may change.">
+        <p> </p>
+
+    </div>
+    <p></p>
+
+    <h2 id="lex_rule">Lexical Rules</h2>
+    <h3 id="lex_mean">What does Lexical mean?</h3>
+
+
+
+
+
+    <div class="note-95">
+
+        <p><b>Definition of "Lexical" in Merriam Webster Online</b> </p>
+        <p>Relating to words or the vocabulary of a language
+            as distinguished from its grammer and construction.
+        </p>
+        <p> </p>
+
+    </div>
+    <p></p>
+    <div class="note-97">
+
+        <p><b>Definition of "Lexical" in Wiktionary</b> </p>
+        <p>Concerning the vocabulary, words or morphemes of a language.
+        </p>
+    </div>
+    <p></p>
+    <div class="note-117">
+
+        <p><b>Morpheme</b> is the smallest linguistic unit within a word that carry a meaning and
+            cannot be further divided. </p>
+        <p>For example, the word <b>"unbreakable"</b> is made up of these
+            smallest linguistic units which carry a meaning and
+            cannot be divided further: <b>"un" + "break" + "able"</b>. </p>
+        <p>Here, <b>"un"</b>, <b>"break"</b>, and <b>"able"</b> are morphemes.</p>
+        <p> </p>
+    </div>
+    <p></p>
+
+
+    <div class="note-95">
+
+        <p>Another example: The word <b>"cats"</b> is formed of the units of
+            <b>"cat"</b>(an animal) + <b>"s"</b>(plural indicator).
+        </p>
+        <p>Here, <b>"cat"</b> and <b>"s"</b> are the <b>two morphemes</b> of the word <b>"cats"</b>. </p>
+        <p style="color: rgb(8,51,143); font-weight: bold;">Some beloved cats are seen below.</p>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/cats_01.jpg" alt="Two Cats">
+        <p></p>
+        <p>... and the word <b>"cat"</b> has only one <b>morpheme</b>. </p>
+        <p style="color: rgb(8,51,143); font-weight: bold;">Below is another beloved cat.</p>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/cats_28.jpg" alt="Cat">
+    </div>
+
+    <figure>
+        <figcaption><b>More Cats ...</b>
+        </figcaption>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/cats_08.jpg" alt="Two Naughty Cats.">
+
+    </figure>
+
+    <p></p>
+
+    <figure>
+        <figcaption><b>and even more Cats ...</b>
+        </figcaption>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/cats_09.jpg" alt="Two more Naughty Cats.">
+
+    </figure>
+
+    <p></p>
+
+
+    <div class="note-97">
+        <p>The following <b>Lexical Rules</b> for issuing <b>SQL Statements</b> apply
+            specifically to the Oracle Database implementation of SQL,
+            but are generally acceptable in other SQL implementations. </p>
+        <p> </p>
+        <p> </p>
+
+    </div>
+    <p></p>
+
+    <h3 id="lex_same">These SQL Statements are treated the same</h3>
+    <div class="note-95">
+
+
+        <p>When you issue a SQL statement, you can include; </p>
+        <ul>
+            <li>one or more tabs,</li>
+            <li>carriage returns,</li>
+            <li>spaces,</li>
+            <li>or comments</li>
+        </ul>
+        anywhere a space occurs within the definition of the statement.
+        <p>Thus, the database evaluates the following SQL statements in the same manner:</p>
+
+    </div>
+    <p></p>
+    <div class="note-97">
+
+        <p><b>Statement 1</b> </p>
+        <pre style="font-size: larger;">
+select	first_name
+,	last_name
+,	salary
+,	round(salary/12,-3)
+,	country_id
+from	meps
+where	pg_id=100
+order by mep_id;
+</pre>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/lex_01.jpg" alt="SQL Statement 1">
+    </div>
+    <p></p>
+
+    <div class="note-117">
+
+        <p> </p>
+        <p><b>Statement 2</b> </p>
+        <pre style="font-size: larger;">
+select	first_name, last_name, salary, 
+        round(salary/12,-3), country_id
+        from	meps
+        where pg_id=100
+        order by mep_id;
+</pre>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/lex_02.jpg" alt="SQL Statement 2">
+    </div>
+    <p></p>
+
+
+    <h3 id="lex_case">Case</h3>
+
+    <div class="note-95">
+        <p><b>CASE</b> is <b>INSIGNIFICANT</b> in reserved words, keywords, identifiers and parameters. </p>
+        <p>Therefore, the database evaluates the following SQL statements in the same manner:</p>
+        <div class="note-charcoal-a30">
+            <p><b>Statement 1</b> </p>
+            <pre style="font-size: larger;">
+select	first_name
+,	last_name
+,	salary
+,	round(salary/12,-3)
+,	country_id
+from	meps
+where	pg_id=100
+order by mep_id;
+</pre>
+            <img style="max-width: 100%; height: auto;" src="../images/c5/lex_01.jpg" alt="SQL Statement 1">
+        </div>
+        <p></p>
+
+        <div class="note-charcoal-a30">
+            <p><b>Statement 2</b> </p>
+            <pre style="font-size: larger;">
+SELECT	first_name
+,	last_name
+,	salary
+,	ROUND(salary/12,-3)
+,	country_id
+FROM	meps
+WHERE	pg_id=100
+ORDER BY mep_id;
+</pre>
+            <img style="max-width: 100%; height: auto;" src="../images/c5/lex_03.jpg" alt="SQL Statement 2">
+        </div>
+        <p></p>
+
+
+    </div>
+    <p></p>
+
+    <div class="note-97">
+        <p><b>CASE</b> is <b>SIGNIFICANT</b> in text literals and quoted names. </p>
+        <p>Therefore, the database <b>CANNOT evaluate</b>
+            the following SQL statements in the same manner:</p>
+        <p> </p>
+        <div class="note-charcoal-a30">
+            <pre style="font-size: larger;">
+select * from countries
+where	country_name='Luxembourg';   
+</pre>
+            <img style="max-width: 100%; height: auto;" src="../images/c5/lex_04.jpg" alt="Correct Literal Content">
+        </div>
+        <p></p>
+
+        <div class="note-charcoal-a30">
+            <pre style="font-size: larger;">
+select * from countries
+where	country_name='LUXEMBOURG';   
+</pre>
+            <img style="max-width: 100%; height: auto;" src="../images/c5/lex_05.jpg" alt="InCorrect Literal Content">
+        </div>
+        <p></p>
+
+    </div>
+    <p></p>
+
+
+    <h3 id="lex_stmt_end">Statement Terminator</h3>
+    <div class="note-95">
+
+        <p>SQL statements are terminated differently in different programming environments. </p>
+        <p>In SQL*Plus and in SQL Developer, <b>";"</b>, the <b>"semicolon"</b> is used
+            to terminate a statement. </p>
+
+        <figure>
+            <figcaption><b>SQL Developer uses ";" as the Statement Terminator</b>
+            </figcaption>
+            <img style="max-width: 100%; height: auto;" src="../images/c5/semicol_01.jpg"
+                alt="SQL Developer uses semicolon as the statement terminator. ">
+
+        </figure>
+
+    </div>
+    <p></p>
+
+
+    <h2 id="arith_ops">Arithmetic Operators in SELECT Statement</h2>
+    <div class="note-95">
+
+        <p>You can use an arithmetic operator with one or two arguments
+            to negate, add, subtract, multiply, and divide numeric values. </p>
+        <p>The arguments to the operator must resolve to numeric datatypes or
+            to any datatype that can be implicitly converted to a numeric datatype. </p>
+        <p></p>
+    </div>
+    <figure>
+        <figcaption><b>You can use the four arithmetic operators in SELECT statements:</b>
+        </figcaption>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/arith_ops_02.jpg"
+            alt="Four arithmetic operators in SELECT statements.">
+
+    </figure>
+
+
+    <p></p>
+    <div class="note-charcoal-a30">
+        <p><b>An Example</b></p>
+        <pre style="font-size: larger;">
+    select first_name
+    ,	last_name
+    ,	salary
+    ,	round(salary/12)
+    ,	country_id
+    ,	pg_id
+    from meps
+    order by pg_id;
+</pre>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/arith_ops_01.jpg" alt="Arithmetic Operators">
+    </div>
+    <p></p>
+
+    <div class="note-97">
+
+        <p>This example uses the <b>"Division"</b>
+            operator to calculate
+            <b>the monthly salary</b> of MEPs: <b>"salary/12"</b>.
+        </p>
+        <p>It then uses the <b>ROUND</b> function to round the result to the nearest whole number. </p>
+    </div>
+    <p></p>
+
+    <img style="max-width: 100%; height: auto;" src="../images/c5/arith_ops_03.jpg" alt="Arithmetic Operators">
+
+    <p> </p>
+
+
+    <p></p>
+
+    <h2 id="arith_ops_prio">Arithmetic Operator Priority</h2>
+
+    <figure>
+        <figcaption><b></b>
+        </figcaption>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/arith_ops_04.jpg" alt="Arithmetic Operators Priority.">
+
+    </figure>
+    <div class="note-charcoal-a30">
+        <p><b>Example</b></p>
+        <pre style="font-size: larger;">
+select first_name
+,	last_name
+,	salary
+,	round(salary/12)
+,	round(1000 + salary/12)
+,	country_id
+,	pg_id
+from meps
+order by pg_id;
+</pre>
+    </div>
+    <p> </p>
+
+    <div class="note-95">
+
+        <p> </p>
+        <ul>
+            <li>The <b>salary</b> column in the <b>MEPS</b> table holds <b>annual salaries</b> of the MEPs.</li>
+            <li>The first arithmetic expression, <b>salary/12</b>, in the SELECT statement above,
+                divides the value of the salary column by 12 to find out the <b>"monthly salary"</b>,
+                and then rounds it up to the nearest whole number.</li>
+            <li>The second arithmetic expression which is <b>1000 + salary/12</b> retrieves
+                the value of the salary column, divides this value by 12,
+                and then adds 1000 to this result.
+                This is the <b>monthly salary increased by 1000</b>. <br>
+                <b>"/"</b> operator takes precedence over <b>"+"</b> operator in the calculation.
+                The result is then rounded up to the nearest whole number.
+            </li>
+        </ul>
+
+    </div>
+    <p></p>
+
+    <div class="note-95">
+        <p>The result of the SELECT statement is seen below &mdash; not all rows are displayed.</p>
+
+        <img style="max-width: 100%; height: auto;" src="../images/c5/arith_ops_prior_01.jpg" alt="Arithmetic Operators">
+
+        <p> </p>
+
+    </div>
+    <p></p>
+
+    <div class="note-charcoal-a30">
+        <p><b>Example which uses Parenthesis</b></p>
+        <pre style="font-size: larger;">
+select first_name
+,	last_name
+,	salary
+,	round(salary/12)
+,	round((1000 + salary)/12)
+,	country_id
+,	pg_id
+from meps
+order by pg_id;
+</pre>
+
+    </div>
+    <p></p>
+    <div class="note-97">
+
+        <p> </p>
+        <ul>
+            <li>The second arithmetic expression which is (1000+salary)/12 in the SELECT statement above,
+                retrieves the value of the salary column,
+                adds 1000 to this value and then divides this result by 12. </li>
+            <li>This is the new monthly salary calculated by raising the annual salary by 1000. </li>
+            <li>The parenthesis takes precedence over any other operator. </li>
+            <li>
+                The result is then rounded up to the nearest whole point.</li>
+        </ul>
+
+    </div>
+    <p></p>
+
+
+    <div class="note-97">
+        <p>The result of the SELECT statement is seen below &mdash; not all rows are displayed.</p>
+
+        <img style="max-width: 100%; height: auto;" src="../images/c5/arith_ops_prior_02.jpg" alt="Arithmetic Operators">
+
+        <p> </p>
+
+    </div>
+    <p></p>
+    <h2 id="arith_ops_null">NULL Values in Arithmetic Expressions</h2>
+    <h3 id="arith_ops_null_def">Definition of a NULL Value</h3>
+    <div class="note-95">
+        <span class="note-bold-navy"> </span>
+        <ul>
+            <li>If a <span class="note-bold-navy">column in a row </span> has NO value,
+                then the column is said to be <b>NULL</b>, or to contain <b>NULL</b>. </li>
+
+            <li>A <b>NULL</b> value means the value is;</li>
+            <ul>
+                <li><b>UNAVAILABLE</b></li>
+                <li><b>UNKNOWN</b></li>
+                <li><b>UNASSIGNED</b></li>
+                <li><b>INAPPLICABLE</b></li>
+            </ul>
+            <li>A <b>NULL</b> value is not zero (0) or a blank space (' ') </li>
+            <p>Zero (0) is a
+                <span class="note-bold-navy">number</span>,
+                and blank space (' ') is a
+                <span class="note-bold-navy">character</span>.
+            </p>
+            <li>Nulls can appear in
+                <span class="note-bold-navy">columns of any datatype</span> that are
+                not restricted by
+                <b>NOT NULL</b> or <b>PRIMARY KEY</b> integrity constraints.
+            </li>
+            <li>An arithmetic expression containing a <b>NULL</b> value
+                evaluates to <b>NULL</b>.</li>
+            <p>ALL operators (except CONCATENATION)
+                return <b>NULL</b> when given a <b>NULL OPERAND</b>.</p>
+        </ul>
+    </div>
+    <p></p>
+    <p></p>
+
+
+
+    <h3 id="arith_ops_null_ex">Example &mdash; NULL Value in Arithmetic Expressions</h3>
+
+    <div class="note-95">
+
+        <p>Let's take an example we have seen previously.
+        </p>
+    </div>
+    <p></p>
+    <div class="note-charcoal-a30">
+        <p><b>Example for NULL values</b></p>
+        <pre style="font-size: larger;">
+select first_name
+,	last_name
+,	salary
+,	round(salary/12)
+,	round(1000 + salary/12)
+,	country_id
+,	pg_id
+from meps
+order by pg_id;
+</pre>
+    </div>
+    <p> </p>
+    <div class="note-97">
+        <p>
+        </p>
+        <span class="note-bold-navy"> </span>
+        <ul>
+            <li>The first arithmetic expression, <b>round(salary/12)</b>,
+                will return <b>NULL</b> if
+                <span class="note-bold-navy">the salary column</span> has a <b>NULL</b> value.
+            </li>
+            <li>The second arithmetic expression
+                <b>round(1000 + salary/12)</b>
+                will also return <b>NULL</b>, when
+                the salary column</span> has a <b>NULL</b> value.
+            </li>
+            <li>This is because, <span class="note-bold-navy">any arithmetic operation </span>
+                except CONCATENATION,
+                will evaluate to <b>NULL</b>, if any of the operands
+                have a <b>NULL</b> value. </li>
+        </ul>
+
+
+    </div>
+    <p></p>
+    <div class="note-117">
+
+        <p> </p>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/arith_ops_null_02.jpg" alt="NULL in Arithmetic Operators">
+    </div>
+    <p></p>
+
+
+    <h2 id="col_alias">Using COLUMN Aliases</h2>
+    <div class="note-95">
+
+        <p> </p>
+        <ul>
+            <li>We can use a <b>column alias</b>,
+                to label the immediately preceding expression
+                in the SELECT list.
+            </li>
+            <li>The <b>alias</b> effectively renames the SELECT list item
+                <span class="note-bold-navy">
+                    for the duration of the query</span>.
+            </li>
+            <li>We can give
+                <span class="note-bold-navy">meaningful names</span>
+                to headings by using
+                <b>column aliases</b>.
+            </li>
+            <li>The <b>alias</b> can be used in the
+                <span class="note-bold-navy">ORDER BY clause</span>,
+                but not in other clauses of the query.
+            </li>
+
+            <li><b>Column aliases</b> are used for
+                <span class="note-bold-navy">arithmetic expressions</span>
+                in queries.
+            </li>
+            <li><b>Column aliases</b> make
+                <span class="note-bold-navy">expressions easier to understand</span>.
+            </li>
+
+        </ul>
+
+    </div>
+    <p></p>
+    <div class="note-97">
+        <p><b>Example</b></p>
+        <pre style="font-size: larger;">
+select first_name
+,	last_name
+,	salary
+,	round(salary * 1.2) salary_1
+,	round(salary + 3000) as salary_2
+,	country_id
+,	pg_id
+from meps
+order by pg_id;
+</pre>
+    </div>
+
+    <div class="note-97">
+
+        <p> </p>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/col_alias_01.jpg" alt="Column Alias Example">
+        <p> </p>
+        <ul>
+            <li>The SELECT statement above uses aliases
+                for the two arithmetic expressions:
+                <ul>
+                    <li><b>salary_1</b> for <b>round(salary * 1.2)</b> </li>
+                    <li><b>salary_2</b> for <b>round(salary + 3000)</b> </li>
+                </ul>
+            </li>
+            <li>Aliases are displayed in uppercase by default,
+                as seen in the SQL Developer output.</li>
+            <li><b>'as' keyword</b> is optional as seen in the second alias.</li>
+        </ul>
+
+    </div>
+    <p></p>
+    <div class="note-117">
+        <p><b>Another Example</b></p>
+        <pre style="font-size: larger;">
+select first_name
+,	last_name
+,	salary
+,	round(salary * 1.2) "Salary Trial 1"
+,	round(salary + 3000) "Salary Trial 2"
+,	country_id
+,	pg_id
+from meps
+order by pg_id;
+</pre>
+    </div>
+
+
+    <div class="note-117">
+
+        <p> </p>
+        <ul>
+            <li>If you want an alias to contain spaces and/or printed in mixed cases,
+                then you can enclose the alias in <b>double quotation marks</b>
+                &mdash; <b>""</b> . </li>
+            <li>The column heading in the output will be displayed exactly
+                the same as the alias.</li>
+            <li>The SELECT statement above uses double quotation marks for the aliases. </li>
+            <li>The column headings for <b>round(salary * 1.2)</b>
+                and <b>round(salary + 3000)</b>
+                are displayed exactly the same as their aliases,
+                <b>"Salary Trial 1"</b> and
+                <b>"Salary Trial 2"</b> respectively, as seen in the output below.
+            </li>
+        </ul>
+
+        <p> </p>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/col_alias_02.jpg" alt="Column Alias Example">
+        <p> </p>
+    </div>
+    <p></p>
+
+    <h2 id="concat_opr">Using the CONCATENATION Operator</h2>
+    <div class="note-95">
+
+        <p> </p>
+        <b></b>
+        <ul>
+            <li>A <b>Concatenation Operator</b> concatenates columns and/or character strings together.</li>
+            <li><b>||</b> is the concatenation operator.</li>
+            <li>The resultant column is always a character expression.</li>
+        </ul>
+
+    </div>
+    <p></p>
+    <div class="note-charcoal-a30">
+
+        <p> </p>
+        <pre style="font-size: larger;">
+select first_name||' '||last_name "MEP Name"
+,	email "e-mail"
+from meps
+order by mep_id;
+</pre>
+    </div>
+    <p> </p>
+    <div class="note-97">
+        <p>The SQL statement above concatenates the <b>first_name</b>,
+            <b>a space character</b> denoted with <b>'&emsp;'</b>, and the <b>last_name</b> columns together to produce
+            one column.
+        </p>
+        <p>The alias <b>"MEP Name"</b> is used for the resultant column. </p>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/concat_01.jpg" alt="Concatenation Example">
+        <p> </p>
+    </div>
+    <p></p>
+
+
+    <h2 id="quot_mark_single">Displaying a Single QUOTATION Mark</h2>
+    <h3 id="quot_marks_two">Use Two Single QUOTATION Marks</h3>
+
+    <div class="note-95">
+        <b></b>
+        <p>To be able to display <b>the single quotation mark</b> itself,
+            you have to type <b>two single quotation marks</b>, as seen in the SQL statement below.</p>
+
+    </div>
+    <p></p>
+    <div class="note-97">
+        <pre style="font-size: larger;">
+select	first_name||' '||last_name||'''s e-mail  is:  '||email "MEPs and their e-mails"
+from	meps;
+</pre>
+        <p> </p>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/single_quote_01.jpg" alt="Display a single quote">
+    </div>
+    <p></p>
+    <div class="note-117">
+        <pre style="font-size: larger;">
+<b>'''s e-mail  is:  '</b>
+</pre>
+        <p>is <b>a character string</b> and it is also called a <b>literal</b>. </p>
+        <p>A <b>literal</b> is output once for each row returned from the table &mdash; as seen in the output above.
+        </p>
+    </div>
+    <p></p>
+
+    <h3 id="quot_oper">Use the QUOTE OPERATOR q</h3>
+    <div class="note-95">
+        <b></b>
+        <p><b>q</b> is the <b>QUOTE OPERATOR</b> which enables us
+            to print <b>Single Quotation Marks</b>
+            <span class="note-bold-navy">freely</span>.
+        </p>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/butterfly_01.jpg" alt="Butterfly Free">
+        <p>These are the steps to use it: </p>
+        <ol>
+            <li>Start your clause with the <b>QUOTE OPERATOR</b>: <b>q</b></li>
+            <li>Open and close the Single Quotation Marks as you would
+                to print a <b>literal</b>, after the Quote Operator: <b>q''</b></li>
+            <li>
+                Choose a <b>delimiter</b>. <br>
+                A <b>delimiter</b> can be:
+                <ul>
+                    <li>any single-byte or multi-byte character</li>
+                    or
+                    <li>it can be any of the following character pairs: <b> {}, [], (), &#60;&#62;</b></li>
+                </ul>
+
+                <b></b>
+                In our example we choose <b>()</b> as <b>delimiters</b>.
+            </li>
+            <li>Place delimiters inside the Single Quotation Marks: <b>q'()'</b> </li>
+            <li>Within the delimiters, you can place any characters with as many
+                Single Quote Characters as you like. </li>
+            <li>The <b>QUOTE OPERATOR</b> syntax recognizes all of the
+                Single Quote Characters <b>within the delimiters</b>,
+                literally as a Single Quote Character.</li>
+            <li>In our example we only need one: <b>q'('s e-mail is)'</b> </li>
+        </ol>
+
+        <p> That's all! <span class="note-emoji-300"> &#128516;</span> </p>
+        <p>It seems like we have to work hard for <span class="note-bold-navy">freedom</span>
+            <span class="note-emoji-300"> &#128521;</span>
+        </p>
+
+
+    </div>
+    <p></p>
+    <div class="note-97">
+
+        <p>Complete SQL Statement is below: </p>
+        <pre style="font-size: larger;">
+select	first_name||' '||last_name||q'('s e-mail is: )'||email "MEPs and their e-mails"
+from	meps;
+</pre>
+    </div>
+    <p></p>
+    <div class="note-117">
+
+        <p> </p>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/single_quote_02.jpg"
+            alt="Display a single quote with QUOTE OPER">
+    </div>
+    <p></p>
+
+
+    <h2 id="distinct_cl">DISTINCT Clause</h2>
+
+    <div class="note-95">
+        <b></b>
+        <p>The <b>DISTINCT</b> keyword instructs Oracle to <b>eliminate duplicates</b> from the returned
+            rows, including duplicates of NULL, if they exist.</p>
+        <p>Specify <b>DISTINCT</b> if you want the database to return <b>ONLY ONE COPY</b> of each set of
+            the duplicate rows selected. </p>
+        <p> </p>
+
+
+
+    </div>
+    <p></p>
+
+    <div class="note-95">
+        <p>In the examples for <b>DISTINCT</b>, we will use the table <b>MEPS</b>.
+        <p>The <b>MEPS</b> table holds details of the <b>Members of the European Parliament</b>.</p>
+        <p>For each Member of the Parliament, it holds details such as first name, last name, e-mail,
+            country, political group, and so on. </p>
+        <p>This table has 787 Members of the Parliament &mdash; as many as the members elected in 2004 EP elections.
+        </p>
+        <p>Most of these members share a country, and share a political group.</p>
+        </p>
+    </div>
+    <p></p>
+
+    <div class="note-97">
+
+        <p>If we want to query the countries of the members of the parliament,
+            we issue the following SQL Statement:
+        </p>
+
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select country_id
+from meps;
+</pre>
+        </div>
+
+        <p>A random selection is seen below.</p>
+        <p>We can see that some country ids are repeated.</p>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/distinct_01.jpg" alt="country_id in meps without distinct">
+        <p></p>
+        <p> </p>
+
+    </div>
+    <p></p>
+    <div class="note-117">
+        <p>If we want to query the political groups of the members of the parliament,
+            we issue the following SQL Statement:
+        </p>
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select pg_id
+from meps;
+</pre>
+        </div>
+
+        <p>A random selection is seen below.</p>
+        <p>We can see that pg ids are repeated.</p>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/distinct_02.jpg" alt="pg_id in meps without distinct">
+
+        <p> </p>
+
+    </div>
+    <p></p>
+    <div class="note-95">
+        <b></b>
+        <p>But, we do <b>NOT</b> want to see the
+            <b>repeated country ids</b> or
+            the <b>repeated political group ids</b>.
+        </p>
+        <p>All we want to see, is
+            <b>the set of UNIQUE countries</b> the members of the parliament come from,
+            or <b>the set of UNIQUE political groups</b> they belong to.
+        </p>
+        <p>This is where <b>DISTINCT</b> comes in. </p>
+        <p>We specify <b>DISTINCT</b> for the database to return <b>ONLY ONE COPY</b> of a country id,
+            or <b>ONLY ONE COPY</b> of a political group id.</p>
+
+    </div>
+    <h3 id="distinct_cl_single">SINGLE COLUMN with DISTINCT</h3>
+
+    <div class="note-95">
+        <b></b>
+        <b>COUNTRY ID Example</b>
+        <p>In order to display only <b>distinct</b> or <b>unique</b> values
+            of the <b>country_id</b> column,
+            the <b>DISTINCT</b> keyword is used: </p>
+
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select distinct country_id
+from meps;
+</pre>
+        </div>
+        <p> </p>
+        <p>This SELECT statement displays only the distinct COUNTRY_IDs in the MEPS table. </p>
+        <p>None of the COUNTRY_IDs repeat. </p>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/distinct_03.jpg" alt="country_id in meps with distinct">
+    </div>
+    <p></p>
+    <div class="note-97">
+        <b></b>
+        <b>Political Group (PG_ID) Example</b>
+        <p> </p>
+        <p>In order to display only <b>distinct</b> or <b>unique</b> values
+            of the <b>pg_id</b> column,
+            the <b>DISTINCT</b> keyword is used: </p>
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select distinct pg_id
+from meps;
+</pre>
+        </div>
+        <p> </p>
+        <p> </p>
+        <p>This SELECT statement displays only the distinct PG_IDs in the MEPS table. </p>
+        <p>None of the PG_IDs repeat. </p>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/distinct_04.jpg" alt="pg_id in meps with distinct">
+    </div>
+    <p></p>
+
+    <h3 id="distinct_cl_multiple">MULTIPLE COLUMNS with DISTINCT</h3>
+
+    <p>Multiple columns can be specified after the DISTINCT keyword. </p>
+
+    <div class="note-95">
+        <b></b>
+        <b>Example</b>
+        <p> </p>
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select distinct country_id, pg_id 
+from meps
+</pre>
+        </div>
+        <p>SQL statement above will display distinct political groups of the MEPs within each country.</p>
+        <p>Only unique combinations of (country_id, pg_id) will be displayed. </p>
+        <p>What we see below is a random selection from the result set.</p>
+
+        <img style="max-width: 100%; height: auto;" src="../images/c5/distinct_05.jpg"
+            alt="(country_id, pg_id)in meps with distinct">
+
+    </div>
+    <p></p>
+
+
+    <div class="note-97">
+
+        <p> </p>
+        <b></b>
+        <b>Another Example</b>
+        <p> </p>
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select distinct pg_id, country_id
+from meps
+order by pg_id, country_id
+</pre>
+        </div>
+        <p>SQL statement above will display distinct countries of the MEPs within
+            each political group.</p>
+        <p>Only unique combinations of (pg_id, country_id) will be displayed. </p>
+        <p>What we see below is a random selection from the result set.</p>
+
+        <img style="max-width: 100%; height: auto;" src="../images/c5/distinct_06.jpg"
+            alt="(pg_id, country_id) in meps with distinct">
+    </div>
+    <p></p>
+
+    <p></p>
+
+    <h2 id="where_cl">WHERE Clause</h2>
+    <div class="note-95">
+
+        <p><b>WHERE Clause</b> in a
+            <b>SELECT Statement</b> enables us to <b>limit the rows</b> in a query.
+        </p>
+        <p>For instance, instead of selecting information about all the countries from the <b>COUNTRIES</b> table,
+            we would like to select information <b>only</b> about countries that are
+            <b>Candidates for Accession to the EU</b>.
+        </p>
+        <p>In our database, these are the countries that have a <b>STATUS</b> of <b>'C'</b>. </p>
+        <p>This is when we use a <b>WHERE Clause</b>. </p>
+        <p>Here is the <b>SELECT Statement</b> which uses
+            the <b>WHERE Clause</b> to limit the rows only to the <b>Candidate Countries</b>: </p>
+        <p></p>
+    </div>
+    <p></p>
+    <div class="note-charcoal-a30-large">
+        <pre style="font-size: larger;">
+        select *
+        from countries
+        where status='C';
+        </pre>
+    </div>
+    <p> </p>
+    <p>Here is the output of the SELECT Statement
+        in SQL Developer. </p>
+    <img style="max-width: 100%; height: auto;" src="../images/c5/where_01.jpg" alt="Where Equal To ">
+    <p></p>
+
+    <div class="note-97">
+
+        <p>We can use a <b>WHERE Clause</b> with many
+            <b>Operators</b> and <b>Conditions</b>.
+        </p>
+
+        <p>Below, we will see examples on some of these
+            <b>Operators</b> and <b>Conditions</b>.
+        </p>
+    </div>
+    <p></p>
+    <div class="note-117">
+
+        <p> </p>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/rose_garden_02.jpg" alt="Beautiful">
+
+        <p>Here we go.</p>
+    </div>
+    <p></p>
+
+    <h3 id="where_cl_eq">Comparison Operator = Equal To</h3>
+    <div class="note-95">
+        <b>Example</b>
+        <p>Retrieve information only about countries that <b>joined the EU</b> on <b>'01-JAN-86'</b>.</p>
+
+    </div>
+    <p> </p>
+    <div class="note-charcoal-a30-large">
+        <pre style="font-size: larger;">
+select *
+from countries
+where join_date='01-JAN-86';
+</pre>
+    </div>
+    <p> </p>
+    <img style="max-width: 100%; height: auto;" src="../images/c5/where_02.jpg" alt="Where Equal To ">
+    <p></p>
+
+    <div class="note-97">
+        <b>Example</b>
+        <p>Retrieve information only about the country <b>Luxembourg</b>. </p>
+
+    </div>
+    <p></p>
+    <div class="note-charcoal-a30-large">
+        <pre style="font-size: larger;">
+select *
+from countries
+where country_name='Luxembourg';
+</pre>
+    </div>
+    <p> </p>
+    <img style="max-width: 100%; height: auto;" src="../images/c5/where_03.jpg" alt="Where Equal To ">
+    <p></p>
+    <div>
+        <p>As seen in the last two examples above,
+            dates and character strings are enclosed in <b>single quotation marks ''</b>.</p>
+
+        <ul>
+            <li><b>Date values</b> are <b>Format sensitive</b>.</li>
+            <li><b>Character values</b> are <b>Case sensitive</b>.</li>
+        </ul>
+    </div>
+    <p></p>
+
+    <div class="note-117">
+        <b>Example</b>
+        <p>SELECT statement below will not return any rows,
+            because country names are stored in <b>INITCAP</b> format in the database. </p>
+        <p><b>INITCAP</b> format is, the Initial is a <b>Capital letter / UPPERCASE</b>
+            and the rest is in <b>LOWERCASE</b>, like <b>Luxembourg</b>. </p>
+    </div>
+    <p></p>
+    <div class="note-charcoal-a30-large">
+        <pre style="font-size: larger;">
+select *
+from countries
+where country_name='LUXEMBOURG';
+</pre>
+    </div>
+    <p> </p>
+    <img style="max-width: 100%; height: auto;" src="../images/c5/where_04.jpg" alt="Where Equal To ">
+    <p></p>
+
+
+
+    <h3 id="where_cl_leq">Comparison Operator &#60;= Less Than or Equal To</h3>
+    <div class="note-95">
+        <b>Example</b>
+        <p>Retrieve information about those countries which
+            joined EU <b>on or before</b> the date of <b>'01-JAN-86'</b>. </p>
+
+    </div>
+    <p></p>
+
+    <div class="note-charcoal-a30-large">
+        <pre style="font-size: larger;">
+select *
+from countries
+where join_date <='01-JAN-86';
+</pre>
+    </div>
+    <p> </p>
+    <img style="max-width: 100%; height: auto;" src="../images/c5/where_05.jpg" alt="Where Less Than or Equal To ">
+    <p></p>
+
+
+    <p></p>
+    <div class="note-97">
+
+        <p><b>GREATER THAN OR EQUAL TO</b> condition is represented by <b> >= </b>. </p>
+    </div>
+    <p></p>
+    <h3 id="where_cl_lt">Comparison Operator &#60; Less Than</h3>
+    <div class="note-95">
+        <b>Example</b>
+        <p>Retrieve information about countries that joined EU <b>earlier</b> than <b>'01-JAN-86'</b>. </p>
+
+    </div>
+    <p></p>
+
+
+    <p> </p>
+    <div class="note-charcoal-a30-large">
+        <pre style="font-size: larger;">
+    select *
+    from countries
+    where join_date < '01-JAN-86';
+    </pre>
+    </div>
+    <p> </p>
+    <img style="max-width: 100%; height: auto;" src="../images/c5/where_06.jpg" alt="Where Less Than">
+    <p></p>
+    <p></p>
+    <div class="note-97">
+
+        <p><b>GREATER THAN</b> condition is represented by <b> > </b>. </p>
+    </div>
+    <p></p>
+    <p></p>
+
+    <h3 id="where_cl_neq">Comparison Operator &#60;&#62; Not Equal To</h3>
+    <div class="note-95">
+        <b>Example</b>
+        <p>Retrieve information about those countries in our database, that are <b>NOT</b> Members of the EU. </p>
+        <p>Member countries have the value <b>'M'</b> in their <b>STATUS</b> column.</p>
+    </div>
+    <p></p>
+    <p> </p>
+    <div class="note-charcoal-a30-large">
+        <pre style="font-size: larger;">
+select	*
+from	countries
+where	status <> 'M';
+    </pre>
+    </div>
+    <p> </p>
+    <img style="max-width: 100%; height: auto;" src="../images/c5/where_07.jpg" alt="Where NOT Equal To ">
+    <p></p>
+    <div class="note-97">
+        <p> <b>NOT EQUAL TO</b> condition can also be represented by <b> != </b> and <b> ^= </b>. </p>
+    </div>
+    <p></p>
+    <h3 id="where_cl_betw">BETWEEN Condition</h3>
+    <div class="note-95">
+        <b></b>
+        <p><b>BETWEEN Condition</b> retrieves those rows in a given <b>RANGE</b>,
+            where the rows satisfying the <b>LOWER and UPPER Limit Conditions</b>
+            are <b>INCLUDED</b> in the Result Set. </p>
+        <p>The <b>LOWER limit</b> must be specified <b>before</b> the <b>UPPER limit</b>,
+            otherwise NO rows will be returned.</p>
+    </div>
+    <p></p>
+    <div class="note-97">
+        <b>Example</b>
+        <p>Retrieve information about those countries which have a
+            <b>gdp_pps</b> in the range 25000 to 30000.
+        </p>
+
+        <p> </p>
+        <b>What is GDP_PPS?</b>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/gdp_pps.jpg" alt="about GDP_PPS">
+        <p></p>
+    </div>
+    <p></p>
+
+    <div class="note-charcoal-a30-large">
+        <pre style="font-size: larger;">
+select *
+from countries
+where gdp_pps between 25000 and 30000;
+    </pre>
+    </div>
+    <p> </p>
+    <img style="max-width: 100%; height: auto;" src="../images/c5/where_08.jpg" alt="Where BETWEEN">
+    <p></p>
+
+    <h3 id="where_cl_in">IN Condition</h3>
+    <div class="note-95">
+
+        <p><b>IN Condition</b> retrieves those rows where the column value is <b>IN</b>
+            the given <b>List</b>. </p>
+        <p>If the datatype of the values in the list are
+            <b>character strings or dates</b>,
+            then they must be enclosed in <b>Single Quotes ' ' </b>.
+        </p>
+        <p> </p>
+    </div>
+    <p></p>
+    <div class="note-97">
+        <b>Example</b>
+        <p>Retrieve information about countries that joined the EU
+            either on <b>'25-MAR-57'</b> or on <b>'01-JAN-73'</b>. </p>
+
+    </div>
+    <p></p>
+    <div class="note-charcoal-a30-large">
+        <pre style="font-size: larger;">
+select	country_id
+,	country_name
+,	join_date
+,	currency_code
+,	currency_name
+from	countries
+where	join_date in ('25-MAR-57','01-JAN-73');
+</pre>
+    </div>
+    <p> </p>
+    <img style="max-width: 100%; height: auto;" src="../images/c5/where_09.jpg" alt="Where IN">
+    <p></p>
+    <div class="note-117">
+
+        <p> </p>
+        <p> </p>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/flowr_01.jpg" alt="flowers">
+        <p></p>
+    </div>
+    <p></p>
+    <h3 id="where_cl_like">LIKE Condition</h3>
+
+    <div class="note-95">
+        <p> <b>LIKE</b> Condition retrieves those rows
+            where the column values
+            <b>PARTIALLY MATCH</b> the <b>VALUE</b> in the given
+            LIKE condition.
+        </p>
+        <p><span class="note-bold-red"> '%' (Percent Sign)</span>
+            or <span class="note-bold-red">'_' (Underscore)</span>,
+            when used with the <b>LIKE</b> Condition, are
+            <span class="note-bold-red">
+                <b>special pattern-matching characters</b>
+            </span>:
+        </p>
+        <span class="note-bold-red"></span>
+        <span class="note-bold-red"></span>
+        <span class="note-bold-red"></span>
+        <ul>
+            <li>
+                <b>% Percent Sign </b> denotes <b>zero characters</b>
+                or <b>many characters</b>.
+            </li>
+            <li>
+                <b>_ Underscore</b> denotes a <b>Single Character</b>.
+            </li>
+        </ul>
+    </div>
+    <p> </p>
+
+    <p><a href="#like_percent"> % (percent sign) in LIKE Condition</a></p>
+    <p><a href="#like_underscore"> _ (underscore) in LIKE Condition </a></p>
+    <p><a href="#like_escape">ESCAPE Characters in LIKE Condition</a> </p>
+
+    <h4 id="like_percent"> % (percent sign) in LIKE Condition</h4>
+
+    <div class="note-95">
+        <b>Example</b>
+        <p>Retrieve those countries that have
+            <b>the letter 'K'</b> in their <b>Currency Names</b>.
+        </p>
+
+
+        <p></p>
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select	country_id
+,	country_name
+,	join_date
+,	currency_code
+,	currency_name
+from	countries
+where	currency_name like '%K%';
+</pre>
+        </div>
+        <p> </p>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/where_11.jpg" alt="Where LIKE">
+        <p></p>
+    </div>
+    <p></p>
+
+
+    <div class="note-97">
+        <b>Example</b>
+        <p>Retrieve those countries which <b>joined</b> the EU
+            <b>during the year of 2004</b>.
+        </p>
+
+
+        <p></p>
+
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select *
+from countries
+where join_date like '%04';
+</pre>
+        </div>
+        <p> </p>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/where_12.jpg" alt="Where LIKE">
+        <p></p>
+    </div>
+    <p></p>
+
+    <h4 id="like_underscore"> _ (underscore) in LIKE Condition</h4>
+
+    <div class="note-95">
+        <b>Example</b>
+        <p>Retrieve those countries
+            that have the letter <b> 'e' </b> as the <b>second (2.) character </b> in their
+            <b>CAPITAL</b> names.
+        </p>
+
+
+        <p></p>
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select country_id
+, country_name
+, status
+, capital
+from countries
+where capital like '_e%';
+</pre>
+        </div>
+        <p> </p>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/where_14.jpg" alt="Where LIKE">
+        <p></p>
+    </div>
+    <p></p>
+
+
+    <h4 id="like_escape">ESCAPE Characters in LIKE Condition</h4>
+
+    <div class="note-95">
+
+        <p>We can include the actual characters <b> '%' </b> or <b> '_' </b>
+            in the <b>LIKE Condition Search Pattern</b>
+            by using the <b>ESCAPE</b> Clause and
+            <b>an escape character</b>.
+        </p>
+        <p>If the <b>escape character</b> precedes
+            <b> '%' </b> or <b> '_' </b>,
+            then Oracle interprets <b> '%' </b> or <b> '_' </b>
+            <b>literally in the search pattern</b> rather than as a
+            <b>special pattern-matching character</b>.
+        </p>
+        <p> </p>
+
+    </div>
+    <p></p>
+
+
+    <div class="note-97">
+        <b>Example WITHOUT ESCAPE Characters</b>
+        <p>We would like to find our <b>ROLE CODES</b>
+            which have the character
+            <b> '_' Underscore</b> in them.
+        </p>
+        <p>We query the database as follows.</p>
+
+        <p></p>
+
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select role_code 
+, role_title 
+from roles
+where role_code like '%_%';
+</pre>
+        </div>
+        <p></p>
+
+        <p>This statement retrieves <b>ALL rows</b>
+            from the <b>ROLES table</b>, even if the <b>ROLE_CODE</b>
+            column do NOT
+            have the character
+            <b> '_' Underscore</b> in it, as seen below.
+        </p>
+        <p><span style="font-size:100px"> &#128550; &#128579;</span></p>
+        <p> <img style="max-width: 100%; height: auto;" src="../images/c5/where_15.jpg" alt="Where LIKE"></p>
+        <p></p>
+
+        <p>This is because;
+        <ul>
+            <li> <b>% represents any character</b> </li>
+            and
+            <li> <b>_ is one character between any characters</b></li>
+        </ul>
+        </p>
+        <span style="font-size:100px">&#127774;</span>
+
+    </div>
+    <p></p>
+    <div class="note-117">
+        <b>Example WITH ESCAPE Characters</b>
+        <p>We now include an <b>ESCAPE Character</b> in our query in the WHERE Clause. </p>
+        <p>We use the character <b>'?'</b> as our ESCAPE character.</p>
+        <p>Any character which is not in the search pattern can be
+            used as an ESCAPE Character.
+        </p>
+
+        <p></p>
+
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select role_code, role_title
+from roles
+where role_code like '%?_%' ESCAPE '?';
+</pre>
+        </div>
+        <p></p>
+
+        <span class="note-bold-red"></span>
+        <span class="note-bold-red"></span>
+        <span class="note-bold-red"></span>
+        <p><b>ESCAPE Character</b> is the character that comes
+            <span class="note-bold-red"> immediately after </span>
+            the <b>ESCAPE keyword</b>.
+        </p>
+        <p>In the SQL statement above, the ESCAPE Character is
+            <b>'?'</b>.
+        </p>
+        <p>We are telling Oracle database to interpret the character
+            <b> which comes after the ESCAPE character</b> literally as it is.
+        </p>
+        <p> <b>'%?_%'</b> means that the <b>'_'</b>
+            character will now be interpreted as <b>'_'</b>,
+            rather than a pattern matching character. </p>
+        <p>Any character which is <b>NOT</b> in the search pattern can be
+            used as an ESCAPE Character.
+        </p>
+
+        <p>Here is the result set of this query:</p>
+
+
+
+
+        <p> <img style="max-width: 100%; height: auto;" src="../images/c5/where_16.jpg" alt="Where LIKE"></p>
+        <p> We have now correctly listed those role codes which
+            have the character <b>underscore _</b> in them!</p>
+
+        <p></p>
+
+
+
+        <p> </p>
+        <img style="max-width: 100%; height: auto;" src="../images/c5/flowr_05.jpg" alt="Flowers">
+    </div>
+    <p></p>
+
+    <p></p>
+    <h3 id="where_cl_logic">Conditions with LOGICAL Operators</h3>
+    <div class="note-95">
+
+        <p>The <b>Logical Operators</b> used in the <b>WHERE Clause</b>
+            of a <b>SELECT Statement</b> are:
+        <ul>
+            <li><b>AND</b></li>
+            <li><b>OR</b></li>
+            <li><b>NOT</b></li>
+        </ul>
+        </p>
+        <p>When a <b>Logical Operator</b> is used in a <b>WHERE Clause</b>,
+            a row is retrieved and displayed
+            <b>ONLY IF THE OVERALL RESULT OF THE CONDITION IS TRUE</b>.
+        </p>
+        <p>Several conditions can be used in a WHERE Clause by joining them
+            using the Logical Operators
+            AND, OR, NOT. </p>
+
+        <b></b>
+    </div>
+    <p></p>
+
+    <h4 id="logi_true">When do the Logical Operators return TRUE ?</h4>
+    <div class="note-95">
+        <b></b>
+        <p> </p>
+        <ul>
+            <li><b>AND</b> returns TRUE if <b>BOTH Conditions are TRUE</b> </li>
+            <li><b>OR</b> returns TRUE if <b>EITHER Condition is TRUE</b>,
+                <br>meaning;
+                <p><b>OR</b> returns TRUE if <b>AT LEAST One Condition is TRUE</b></p>
+            </li>
+            <li><b>NOT</b> returns TRUE if
+                <b>the FOLLOWING Condition is FALSE</b>
+            </li>
+        </ul>
+    </div>
+    <p></p>
+
+    <h4 id="logi_nulls">NULLs in Conditions</h4>
+    <h5 id="logi_null_def">Definition of NULL &mdash; Again &#128519; </h5>
+    <p> We have already seen the <b>Definition of NULL </b> in a previous chapter,
+        related to <b>Arithmetic Expressions</b>.
+
+    </p>
+    <p> The definition given below, is the same. However, the Usage will be different. </p>
+    <p></p>
+
+    <div class="note-95">
+
+        <p> </p>
+
+        <span class="note-bold-navy"> </span>
+        <ul>
+            <li>If a <span class="note-bold-navy">column in a row </span> has
+                <b>NO value</b>,
+                then the column is said to be <b>NULL</b>,
+                or to contain <b>NULL</b> value.
+            </li>
+
+            <li>A <b>NULL</b> value means the value is;</li>
+            <ul>
+                <li><b>UNAVAILABLE</b></li>
+                <li><b>UNKNOWN</b></li>
+                <li><b>UNASSIGNED</b></li>
+                <li><b>INAPPLICABLE</b></li>
+            </ul>
+            <p></p>
+            <li><b>NULL</b> represents
+                <span class="note-bold-red">a LACK OF DATA</span>
+            <li><b>NULL</b> is <span class="note-bold-red">UNKNOWN</span> </li>
+            <p></p>
+            <li>A <b>NULL</b> value is not zero (0) or a blank space (' ') </li>
+            <p>Zero (0) is a
+                <span class="note-bold-navy">number</span>,
+                and blank space (' ') is a
+                <span class="note-bold-navy">character</span>.
+            </p>
+            <li>Nulls can appear in
+                <span class="note-bold-navy">columns of any datatype</span> that are
+                not restricted by
+                <b>NOT NULL</b> or <b>PRIMARY KEY</b> integrity constraints.
+            </li>
+            <li>An arithmetic expression containing a <b>NULL</b> value
+                evaluates to <b>NULL</b>.</li>
+            <p>ALL operators (except CONCATENATION)
+                return <b>NULL</b> when given a <b>NULL OPERAND</b>.</p>
+        </ul>
+
+    </div>
+    <p></p>
+
+
+    <h5 id="logi_null_compare">NULL Comparison Conditions</h5>
+    <div class="note-95">
+
+        <p>To test for nulls,
+            <span class="note-bold-red">ONLY two Comparison Conditions</span>
+            are available:
+        <ul>
+            <li><b> IS NULL </b> </li>
+            <li><b> IS NOT NULL</b></li>
+        </ul>
+
+        </p>
+        <p>If any other condition is used with nulls
+            and the result depends on the value of the null,
+            then the result is <b> UNKNOWN </b>
+            which also evaluates to <b> NULL</b>. </p>
+        <p> </p>
+
+    </div>
+    <p></p>
+
+    <div class="note-97">
+        <p>Because <b>NULL</b> represents
+            <span class="note-bold-red">a LACK OF DATA</span>,
+            because a <b>NULL</b> is <span class="note-bold-red">UNKNOWN</span>;
+        <ul>
+            <li>a <b>NULL</b>
+                <span class="note-bold-red">CANNOT BE EQUAL TO or UNEQUAL TO</span>
+                any <b>VALUE</b>
+            </li>
+            <li>
+                a <b>NULL</b>
+                <span class="note-bold-red">CANNOT BE EQUAL TO or UNEQUAL TO</span>
+                another <b>NULL</b>
+            </li>
+        </ul>
+        </p>
+        <p> </p>
+        <p> </p>
+        <p> </p>
+
+
+    </div>
+    <p></p>
+
+    <h5 id="logi_null_unknown">UNKNOWN(NULL) and FALSE</h5>
+    <div class="note-95">
+
+        <p>A Logical Condition that evaluates to
+            <b>"UNKNOWN/NULL"</b> acts <span class="note-bold-red">ALMOST</span> like
+            <b>FALSE</b>, but <span class="note-bold-red">NOT EXACTLY THE SAME</span>:
+        </p>
+        <p> </p>
+
+        <ul>
+            <li>a SELECT Statement with a Condition in the WHERE clause that <b>evaluates</b> to
+                <b>"UNKNOWN/NULL"</b> returns
+                <span class="note-bold-red">NO ROWS</span>,
+                because for a row to be returned,
+                WHERE Clause <b>MUST EVALUATE</b> to <b>TRUE</b>.
+                <p></p><b>This is the SAME as the behaviour of a FALSE condition.</b></p>
+            </li>
+
+            <li>However, a condition evaluating to <b>"UNKNOWN/NULL"</b>
+                <span class="note-bold-red"> differs </span>
+                from <b>FALSE</b> in that, further operations on an
+                <b>"UNKNOWN/NULL"</b> condition evaluation
+                will evaluate to <b>"UNKNOWN/NULL"</b>.
+
+                <p> For example, <br>
+                    <b>NOT FALSE</b> evaluates to <b>TRUE</b>, <br>
+                    but <br>
+                    <span class="note-bold-red"> NOT "UNKNOWN/NULL" </span>
+                    evaluates to <span class="note-bold-red"> "UNKNOWN/NULL" </span>.
+                </p>
+            </li>
+
+        </ul>
+    </div>
+    <p></p>
+
+    <h5 id="logi_nul_exp">Example with NULLS</h5>
+    <div class="note-95">
+        <p>Table below shows examples of various evaluations
+            involving NULLS in conditions. </p>
+        <p> </p>
+
+    </div>
+    <p></p>
+
+    <div class="note-95">
+
+
+        <p></p>
+
+        <table>
+            <caption style="font-weight: bold;">
+                NULL values in Conditions
+            </caption>
+            <tr>
+                <th>Conditions</th>
+                <th>Value of "a" </th>
+                <th>Value of the Condition</th>
+            </tr>
+
+            <tr>
+                <td>a IS NULL</td>
+                <td>10</td>
+                <td>FALSE</td>
+            </tr>
+
+
+            <tr>
+                <td>a IS NOT NULL</td>
+                <td>10</td>
+                <td>TRUE</td>
+            </tr>
+
+
+            <tr>
+                <td>a IS NULL</td>
+                <td>NULL</td>
+                <td>TRUE</td>
+            </tr>
+
+
+            <tr>
+                <td>a IS NOT NULL</td>
+                <td>NULL</td>
+                <td>FALSE</td>
+            </tr>
+
+
+            <tr>
+                <td>a = NULL</td>
+                <td>10</td>
+                <td>UNKNOWN / NULL</td>
+            </tr>
+
+
+            <tr>
+                <td>a != NULL</td>
+                <td>10</td>
+                <td>UNKNOWN / NULL</td>
+            </tr>
+
+            <tr>
+                <td>a = NULL</td>
+                <td>NULL</td>
+                <td>UNKNOWN / NULL</td>
+            </tr>
+
+
+            <tr>
+                <td>a != NULL</td>
+                <td>NULL</td>
+                <td>UNKNOWN / NULL</td>
+            </tr>
+
+
+            <tr>
+                <td>a = 10</td>
+                <td>NULL</td>
+                <td>UNKNOWN / NULL</td>
+            </tr>
+
+
+            <tr>
+                <td>a != 10</td>
+                <td>NULL</td>
+                <td>UNKNOWN / NULL</td>
+            </tr>
+
+        </table>
+
+
+    </div>
+    <p></p>
+    <div class="note-95">
+
+        <p>If the conditions evaluating to <b>UNKNOWN / NULL</b> were used in
+            the WHERE clause of a SELECT statement,
+            then <b>NO ROWS</b> would be returned for that query. </p>
+        <p> </p>
+    </div>
+    <p></p>
+
+    <h4 id="logi_and">AND Operator</h4>
+    <div class="note-95">
+        <b></b>
+        <p>The <b>AND Operator</b> returns <b>TRUE</b>
+            <span class="note-bold-red">ONLY IF BOTH CONDITIONS are TRUE</span>.
+        </p>
+        <p>Therefore, a <b>ROW is RETURNED</b>
+            <span class="note-bold-red">IF BOTH CONDITIONS</span> joined by the
+            <b>AND Operator</b> in a WHERE clause are <b>TRUE</b>.
+        </p>
+        <p> </p>
+        <p> </p>
+    </div>
+    <p> </p>
+    <div class="note-95">
+        <b>Example</b>
+        <p>Retrieve those countries whose status is <b>either 'C' or 'M'</b>,
+            and whose <b>gdp_pps < 10000</b>.
+        </p>
+        <p>Both conditions must be satisfied for a row to be returned. </p>
+    </div>
+    <p> </p>
+    <div class="note-95">
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select	country_id
+,	country_name
+,	status
+,	gdp
+,	gdp_pps
+from 	countries
+where	status in ('C','M')
+and	gdp_pps < 10000;
+</pre>
+            <p></p>
+            <p><img src="../images/c5/where_19.jpg" style="max-width:100% ;" height="auto" alt="AND Operator"></p>
+
+        </div>
+        <p></p>
+        <span class="note-bold-red"></span>
+    </div>
+    <p></p>
+
+    <h5 id="logi_and_truth">AND Truth Table</h5>
+    <div>
+
+        <p> </p>
+        <table id="table_and">
+            <tr>
+                <th style="font-size: x-large; color: rgb(222, 59, 33)  ;">AND</th>
+                <th style="background-color: rgba(102,99,102, 30%);">TRUE</th>
+                <th style="background-color: rgba(102,99,102, 30%);">FALSE</th>
+                <th style="background-color: rgba(102,99,102, 30%);">NULL</th>
+            </tr>
+
+            <tr>
+                <td style="background-color: rgba(102,99,102, 30%);"><b>TRUE</b></td>
+                <td style="background-color: rgb(125, 186, 0); color: white;
+                font-size: x-large; ">TRUE</td>
+                <td>FALSE</td>
+                <td>NULL</td>
+            </tr>
+
+            <tr>
+                <td style="background-color: rgba(102,99,102, 30%);"><b>FALSE</b> </td>
+                <td>FALSE</td>
+                <td>FALSE</td>
+                <td>FALSE</td>
+            </tr>
+            <tr>
+                <td style="background-color: rgba(102,99,102, 30%);"><b>NULL</b></td>
+                <td>NULL</td>
+                <td>FALSE</td>
+                <td>NULL</td>
+            </tr>
+
+        </table>
+        <p> </p>
+    </div>
+    <p></p>
+    <div class="note-95">
+        <p>A <b>Row will be Returned</b> when the <b>Result is TRUE</b>.</p>
+        <p>As we can see in the <b>"AND Truth Table"</b> above,
+            the <b>AND Operator</b> returns
+            <b>TRUE</b> only if
+            <b>BOTH CONDITIONS</b> return <b>TRUE</b>.
+        </p>
+
+        <p>A <b>TRUE</b> is hard to find! &mdash; when using the <b>AND Operator</b>. </p>
+    </div>
+    <p></p>
+
+    <h5 id="logi_and_strength">Order of Strength for AND</h5>
+    <div class="note-95">
+
+        <p>
+        <ol style="font-size: larger;">
+            <li><b>FALSE</b></li>
+            <li><b>NULL</b></li>
+            <li><b>TRUE</b></li>
+        </ol>
+        </p>
+
+    </div>
+    <p></p>
+
+    <b></b>
+    <span class="note-bold-red"></span>
+
+    <div class="note-95">
+        <p><span class="note-bold-red">STRONGEST: FALSE </span></p>
+        <p>When two conditions are joined with the <b>AND Operator</b>,
+            the <span class="note-bold-red">STRONGEST</span> condition
+            is the <b>FALSE</b> condition. </p>
+        <p>A <span class="note-bold-red">FALSE</span> condition always makes
+            the result <span class="note-bold-red">FALSE</span> whatever
+            the other condition evaluates to,
+            whether NULL or FALSE or TRUE. </p>
+        <p> </p>
+
+    </div>
+    <p></p>
+    <b></b>
+    <span class="note-bold-red"></span>
+    <div class="note-95">
+        <p><span class="note-bold-red">SECOND: NULL </span></p>
+        <p>When two conditions are joined with the <b>AND Operator</b>,
+            the <span class="note-bold-red">Second Strongest</span>
+            condition is <b>NULL</b>. </p>
+        <p>If a <b>NULL</b> condition is joined with a TRUE condition,
+            the result is always <b>NULL</b>. </p>
+        <p>If <b>NULL</b> is joined with <b>NULL</b> the result is again <b>NULL</b>. </p>
+        <p>If <b>NULL</b> is joined with <span class="note-bold-red">FALSE</span>,
+            the result is <span class="note-bold-red">FALSE</span> as stated above.</p>
+    </div>
+    <p></p>
+    <b></b>
+    <span class="note-bold-red"></span>
+    <div class="note-95">
+        <p><span class="note-bold-red">WEAKEST: TRUE </span></p>
+        <p>The <b>TRUE</b> condition is the
+            <span class="note-bold-red">WEAKEST</span>
+            when <b>AND</b> is used to join two conditions.
+        </p>
+        <p><b>TRUE</b> only makes the result <b>TRUE</b>
+            if the other condition is also <b>TRUE</b>. </p>
+    </div>
+    <p></p>
+
+    <h4 id="logi_or">OR Operator</h4>
+
+    <div class="note-97">
+        <b></b>
+        <p>The <b>OR Operator</b> returns <b>TRUE</b>
+            <span class="note-bold-red">ONLY IF ONE OF THE CONDITIONS is TRUE</span>.
+        </p>
+        <p>Therefore, a <b>ROW is RETURNED</b>
+            <span class="note-bold-red">IF ONE OF THE CONDITIONS</span>
+            joined by the
+            <b>OR Operator</b> in a WHERE clause is <b>TRUE</b>.
+        </p>
+        <p> </p>
+        <p> </p>
+    </div>
+    <p> </p>
+    <div class="note-97">
+        <b>Example</b>
+        <p>Retrieve those countries whose status is <b>either 'C' or 'M'</b>,
+            or whose <b>gdp_pps < 10000</b>.
+        </p>
+        <p>It is sufficient for one of the conditions to be satisfied
+            for a row to be returned. </p>
+    </div>
+    <p> </p>
+    <div class="note-97">
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select	country_id
+,	country_name
+,	status
+,	gdp
+,	gdp_pps
+from 	countries
+where	status in ('C','M')
+or	gdp_pps < 10000;
+</pre>
+            <p></p>
+            <p><img src="../images/c5/where_20.jpg" style="max-width:100% ;" height="auto" alt="OR Operator"></p>
+
+        </div>
+        <p></p>
+        <span class="note-bold-red"></span>
+    </div>
+    <p></p>
+
+    <h5 id="logi_or_truth">OR Truth Table</h5>
+
+    <div>
+
+        <p> </p>
+        <table id="table_and">
+            <tr>
+                <th style="font-size: x-large; color: rgb(222, 59, 33)  ;">OR</th>
+                <th style="background-color: rgba(102,99,102, 30%);">TRUE</th>
+                <th style="background-color: rgba(102,99,102, 30%);">FALSE</th>
+                <th style="background-color: rgba(102,99,102, 30%);">NULL</th>
+            </tr>
+
+            <tr>
+                <td style="background-color: rgba(102,99,102, 30%);"><b>TRUE</b></td>
+                <td style="background-color: rgb(125, 186, 0); color: white;
+                font-size: x-large; ">TRUE</td>
+                <td style="background-color: rgb(125, 186, 0); color: white;
+                font-size: x-large; ">TRUE</td>
+                <td style="background-color: rgb(125, 186, 0); color: white;
+                font-size: x-large; ">TRUE</td>
+            </tr>
+
+            <tr>
+                <td style="background-color: rgba(102,99,102, 30%);"><b>FALSE</b> </td>
+                <td style="background-color: rgb(125, 186, 0); color: white;
+                font-size: x-large; ">TRUE</td>
+                <td>FALSE</td>
+                <td>NULL</td>
+            </tr>
+            <tr>
+                <td style="background-color: rgba(102,99,102, 30%);"><b>NULL</b></td>
+                <td style="background-color: rgb(125, 186, 0); color: white;
+                font-size: x-large; ">TRUE</td>
+                <td>NULL</td>
+                <td>NULL</td>
+            </tr>
+
+        </table>
+        <p> </p>
+    </div>
+    <p></p>
+    <div class="note-97">
+
+        <p>As we can see in the <b>"OR Truth Table"</b> above,
+            the <b>OR Operator</b> returns
+            <b>TRUE</b>
+            <span class="note-bold-red">EVEN IF ONE OF THE CONDITIONS</span>
+            is <b>TRUE</b>.
+        </p>
+        <p>These are the cases when a <b>ROW IS RETURNED</b>
+            from a Query.</p>
+    </div>
+    <p></p>
+
+
+    <h5 id="logi_or_strenth">Order of Strength for OR</h5>
+
+    <div class="note-97">
+
+        <p>
+        <ol style="font-size: larger;">
+            <li><b>TRUE</b></li>
+            <li><b>NULL</b></li>
+            <li><b>FALSE</b></li>
+        </ol>
+        </p>
+
+    </div>
+    <p></p>
+
+    <b></b>
+    <span class="note-bold-red"></span>
+
+    <div class="note-97">
+        <p><span class="note-bold-red">STRONGEST: TRUE </span></p>
+        <p>When two conditions are joined with the <b>OR Operator</b>,
+            the <span class="note-bold-red">STRONGEST</span> condition
+            is the <b>TRUE</b> condition. </p>
+        <p>A <span class="note-bold-red">TRUE</span> condition always makes
+            the result <span class="note-bold-red">TRUE</span> whatever
+            the other condition evaluates to,
+            whether NULL or FALSE or TRUE. </p>
+        <p> </p>
+
+    </div>
+    <p></p>
+    <b></b>
+    <span class="note-bold-red"></span>
+    <div class="note-97">
+        <p><span class="note-bold-red">SECOND: NULL </span></p>
+        <p>When two conditions are joined with the <b>OR Operator</b>,
+            the <span class="note-bold-red">Second Strongest</span>
+            condition is <b>NULL</b>. </p>
+        <p>If a <b>NULL</b> condition is joined with a FALSE condition,
+            the result is always <b>NULL</b>. </p>
+        <p>If <b>NULL</b> is joined with <b>NULL</b> the result is again <b>NULL</b>. </p>
+        <p>If <b>NULL</b> is joined with <span class="note-bold-red">TRUE</span>,
+            the result is <span class="note-bold-red">TRUE</span> as stated above.</p>
+    </div>
+    <p></p>
+    <b></b>
+    <span class="note-bold-red"></span>
+    <div class="note-97">
+        <p><span class="note-bold-red">WEAKEST: FALSE </span></p>
+        <p>The <b>FALSE</b> condition is the
+            <span class="note-bold-red">WEAKEST</span>
+            when <b>OR</b> is used to join two conditions.
+        </p>
+        <p><b>FALSE</b> only makes the result <b>FALSE</b>
+            if the other condition is also <b>FALSE</b>. </p>
+    </div>
+    <p></p>
+
+    <h4 id="logi_not">NOT Operator</h4>
+    <div class="note-95">
+        <p>The <b>NOT Operator</b> returns <b>TRUE</b>,
+            ONLY IF
+            <span class="note-bold-red">the Condition following NOT</span>
+            is <b>FALSE</b>.
+        </p>
+        <p>This is when a <b>ROW IS RETURNED</b>
+            from a Query.</p>
+        <p> </p>
+        <p> </p>
+
+    </div>
+    <p></p>
+
+    <h5 id="logi_not_truth">NOT Truth Table</h5>
+
+    <div>
+
+        <p> </p>
+        <table id="table_and">
+            <tr>
+                <th> </th>
+                <th style="background-color: rgba(102,99,102, 30%);">TRUE</th>
+                <th style="background-color: rgba(102,99,102, 30%);">FALSE</th>
+                <th style="background-color: rgba(102,99,102, 30%);">NULL</th>
+            </tr>
+
+            <tr>
+                <td style="font-size: x-large; color: rgb(222, 59, 33)  ;"><b>NOT</b></td>
+                <td>FALSE</td>
+                <td style="background-color: rgb(125, 186, 0); color: white;
+                font-size: x-large; ">TRUE</td>
+                <td>NULL</td>
+            </tr>
+        </table>
+        <p> </p>
+    </div>
+    <p></p>
+
+    <div class="note-95">
+        <p><span class="note-bold-red">NOT TRUE </span> becomes <b>FALSE</b>. </p>
+        <p></p>
+        <p><span class="note-bold-red">NOT FALSE </span> becomes <b>TRUE</b>. </p>
+        <p></p>
+        <p><span class="note-bold-red">NOT NULL </span> becomes <b>NULL</b>. </p>
+    </div>
+    <p></p>
+
+    <div class="note-95">
+
+        <p><span class="note-bold-red">NOT FALSE </span>
+            which becomes <b>TRUE</b>, returns a row from the Query. </p>
+        <p></p>
+    </div>
+    <p></p>
+    <h5 id="logi_not_ex">Example of NOT</h5>
+    <div class="note-97">
+        <p></p>
+        <p><b>Example</b></p>
+
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select	country_id
+,	country_name
+,	status
+,	gdp
+,	gdp_pps
+from 	countries
+where	status not in ('C','M');
+</pre>
+            <p></p>
+            <p><img src="../images/c5/where_21.jpg" style="max-width:100% ;" height="auto" alt="NOT Operator"></p>
+
+        </div>
+        <p></p>
+
+    </div>
+    <p> </p>
+    <div class="note-97">
+        <p>Let's examine the <b>WHERE Clause</b> of the SELECT Statement above: </p>
+        <div class="note-charcoal-a30-large">
+            <p>WHERE STATUS NOT IN ('C' , 'M') </p>
+        </div>
+        <p> </p>
+        <p>The <b>WHERE Clause</b> above is identical to: </p>
+        <p> </p>
+        <div class="note-charcoal-a30-large">
+            <p>WHERE (STATUS != 'C') AND (STATUS != 'M') </p>
+        </div>
+        <p> </p>
+        <p>This SELECT Statement retrieves those rows
+            where <b>STATUS IS NOT EQUAL TO 'C' AND
+                STATUS IS NOT EQUAL TO 'M'</b>.
+        </p>
+        <p>However, it will <b>NOT retrieve</b> those rows whose
+            <b>STATUS is NULL</b>.
+        </p>
+        <span class="note-bold-red">WHY?</span>
+        <div class="note-97-a15">
+            <ul>
+                <li>The SELECT statement compares the
+                    <b>STATUS column value</b> of each row in the
+                    <b>COUNTRIES</b> table with
+                    <b>'C' and 'M'</b> and retrieves those
+                    <b>WHERE STATUS != 'C' AND STATUS != 'M'</b>.
+                </li>
+                <li>But, if a row has a <b>NULL value</b> in its
+                    <b>STATUS column</b>,
+                    the condition <b>((NULL != 'C') AND (NULL != 'M'))</b>
+                    evaluates to <b>(NULL AND NULL)</b>
+                    which then evaluates to <b>NULL</b>.
+                </li>
+                <li>Since a row will only be retrieved
+                    if the <b>WHERE Condition is TRUE</b>,
+                    this row will not be returned. </li>
+            </ul>
+        </div>
+        <p> </p>
+    </div>
+    <p> </p>
+
+    <h5 id="logi_not_ex_2">Example 2 of NOT</h5>
+
+    <p></p>
+    <div class="note-117">
+
+        <p> </p>
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select	country_id
+,	country_name
+,	status
+,	gdp
+,	gdp_pps
+from 	countries
+where	gdp_pps not between 10000 and 40000;
+</pre>
+            <p></p>
+            <p><img src="../images/c5/where_22.jpg" style="max-width:100% ;" height="auto" alt="NOT Operator"></p>
+
+        </div>
+        <p></p>
+    </div>
+    <p></p>
+    <h5 id="logi_not_ex_3">Example 3 of NOT</h5>
+
+    <div class="note-95">
+
+        <p> </p>
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select	country_id
+,	country_name
+,	status
+,	join_date
+from 	countries
+where	join_date not like '%04';
+</pre>
+            <p></p>
+            <p><img src="../images/c5/where_23.jpg" style="max-width:100% ;" height="auto" alt="NOT Operator"></p>
+
+        </div>
+        <p></p>
+    </div>
+    <p></p>
+
+    <h5 id="logi_not_ordinary">NOT Ordinary</h5>
+    <div class="note-97">
+
+        <p>Definitely, NOT an Ordinary Flower! </p>
+        <p><img src="../images/c5/iris_01.jpg" style="max-width:100% ;" height="auto" alt="IRIS Flower"></p>
+
+    </div>
+    <p></p>
+
+    <h3 id="where_cl_prio">Operator Priority</h3>
+    <div class="note-95">
+
+        <p>Operator Priority in order of evaluation is as follows: </p>
+        <ol>
+            <li>Arithmetic Operators <b> * , / , + , - </b> </li>
+            <li>Concatenation Operator <b> || </b> </li>
+            <li>Comparison conditions <b> = , < , <=,> , >= , != </b> </li>
+            <li><b>IS NULL , IS NOT NULL , LIKE , IN , NOT IN </b></li>
+            <li><b>BETWEEN , NOT BETWEEN</b></li>
+            <li><b>NOT</b></li>
+            <li><b>AND</b></li>
+            <li><b>OR</b></li>
+        </ol>
+        <p> <b>Parenthesis ()</b>
+            are used to <b>OVERRIDE the Default Priority</b>.</p>
+    </div>
+    <p></p>
+    <h4 id="where_cl_prio_ex1">Example 1 on Operator Priority</h4>
+    <div class="note-97">
+
+        <p> </p>
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select	country_id
+,	country_name
+,	status
+,	gdp_pps
+from 	countries
+where	gdp_pps < 10000
+or	gdp_pps > 30000
+and	status='M';              
+</pre>
+            <p></p>
+
+        </div>
+    </div>
+    <p></p>
+    <div class="note-97">
+        <p><b>WHERE Clause</b> of this SELECT Statement, has
+            <b>3 Conditions</b>:
+        </p>
+        <p>
+        <ol>
+            <li>gdp_pps < 10000</li>
+            <li>gdp_pps > 30000</li>
+            <li>status='M'</li>
+        </ol>
+        </p>
+        <p></p>
+        <p></p>
+    </div>
+    <p></p>
+
+
+    <div class="note-97">
+        <p>The <b>1<sup>st</sup> Condition</b> is joined to the
+            <b>2<sup>nd</sup> Condition </b>
+            by an <b>"OR Operator"</b>.
+        </p>
+        <p>The <b>2<sup>nd</sup> Condition </b> is joined to the
+            <b>3<sup>rd</sup> Condition</b>
+            by an <b>"AND Operator"</b>.
+        </p>
+    </div>
+    <p></p>
+
+    <div class="note-97">
+        <p>According to the
+            <b>Operator Priority</b> evaluation above,
+            <b>"AND Operator"</b> is evaluated <b>BEFORE</b>
+            <b>"OR Operator"</b>.
+        </p>
+        <p>Therefore, we now have the following
+            <b>2 Conditions</b>:
+        </p>
+        <p>
+        <ol>
+            <li>gdp_pps > 30000 AND status='M'</li>
+            <li>gdp_pps < 10000</li>
+        </ol>
+        </p>
+        <p>The two conditions above will be joined by
+            the
+            <b>"OR Operator"</b>.
+        </p>
+
+        <p>If either of the two conditions evaluates to TRUE,
+            a row will be returned from the query.</p>
+    </div>
+    <p></p>
+
+
+    <div class="note-97">
+        <p>These two conditions joined by <b>OR</b>
+            reads as the following:</p>
+        <p>Select the row if,
+            "gdp_pps of the country is greater than 30000 and
+            the status of the country is 'M' ",
+            or "the gdp_pps of the country is less than 10000".
+        </p>
+
+        <p>Result set of this query is seen below.</p>
+        <p><img src="../images/c5/where_24.jpg" style="max-width:100% ;" height="auto" alt="Operator Priority Example 1"></p>
+
+    </div>
+    <p></p>
+
+
+    <h4 id="where_cl_prio_ex2">Example 2 on Operator Priority</h4>
+
+    <div class="note-117">
+
+        <p> </p>
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select	country_id
+,	country_name
+,	status
+,	gdp_pps
+from 	countries
+where	(gdp_pps < 10000
+or	gdp_pps > 30000)
+and	status='M';
+</pre>
+            <p></p>
+
+        </div>
+    </div>
+    <p></p>
+
+    <div class="note-117">
+
+        <p>This SELECT Statement is almost the same as
+            in Example 1. </p>
+        <p>However, in Example 2,
+            the <b>Default Operator Priority</b>
+            is overriden by using <b>paranthesis ()</b>.
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+where	(gdp_pps < 10000
+or	gdp_pps > 30000)
+and	status='M';
+</pre>
+            <p></p>
+
+        </div>
+    </div>
+    <p></p>
+
+
+    <div class="note-117">
+
+        <p>The SELECT Statement now reads as: </p>
+        <p>Select the row if,
+            "the gdp_pps of the country is less than 10000 or greater than 30000",
+            and "the country has a status of 'M' ". </p>
+    </div>
+    <p></p>
+
+    <div class="note-117">
+
+        <p>The result set of example 2 can be seen below. </p>
+        <p><img src="../images/c5/where_25.jpg" style="max-width:100% ;" height="auto" alt="Operator Priority Example 2"></p>
+
+    </div>
+    <p></p>
+
+    <h4 id="where_cl_q">Question on what we have just learned</h3>
+
+
+        <div class="note-95">
+            <p><span class="note-bold-red">Question</span></p>
+            <p>You query the database with this SQL Statement: </p>
+            <p> </p>
+            <div class="note-95-a15">
+                <pre style="font-size: larger;">
+SELECT  column1
+FROM    table1
+WHERE   column1 between 1 AND 250
+OR  (column1 IN (190,500,600)
+AND column1 BETWEEN 250 AND 500);
+</pre>
+            </div>
+            <p> </p>
+            <p>Which value <b>could </b> the statement return? </p>
+            <p>
+            <ol type="A">
+                <li>400</li>
+                <li>260</li>
+                <li>600</li>
+                <li>100</li>
+            </ol>
+            </p>
+            <p> </p>
+        </div>
+        <p></p>
+        <div class="note-95">
+            <p><span class="note-bold-red">Answer</span></p>
+            <p> Correct answer is <b>100</b>, the last one. </p>
+            <p>Please note that the question asks;
+                <br>
+                Which value <b>could </b> the statement return?
+            </p>
+            <p>It does NOT ask for the Whole Result Set. </p>
+            <p>The Whole Result Set is:</p>
+            <p>(1, 2, 3, ... 249, 250, 500) </p>
+            <p>The Multiple Choice question wants only one of the
+                integers in this Result Set.
+            </p>
+            <p>100 is in this Result Set.</p>
+            <p></p>
+            <p>Tricky Question
+                <span style="font-size: xx-large;"> &#128517; &#128521; </span>
+            </p>
+        </div>
+        <p></p>
+        <h2 id="order_by_cl">ORDER BY Clause</h2>
+        <div class="note-95">
+
+            <p> </p>
+            <p>The <b>Order of Rows</b> returned in a query is <b>"undefined"</b>. </p>
+            <p>The SELECT Statement below returns the rows in no particular order.</p>
+
+        </div>
+        <p></p>
+
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select	country_id
+,	country_name
+,	join_date
+,	capital
+,	currency_code
+,	currency_name
+from	countries
+where	status='M';
+</pre>
+            <p></p>
+
+        </div>
+
+        <p></p>
+        <p><img src="../images/c5/order_by_01.jpg" style="max-width:100% ;" height="auto" alt="Order By"></p>
+        <p></p>
+        <div class="note-97">
+
+            <p>The <b>ORDER BY</b> Clause is used to sort the rows. </p>
+            <p></p>
+        </div>
+        <p></p>
+        <p></p>
+
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select	country_id
+,	country_name
+,	join_date
+,	capital
+,	currency_code
+,	currency_name
+from	countries
+where	status='M'
+order by join_date;
+</pre>
+            <p></p>
+
+        </div>
+
+        <p>Member countries are now sorted in their order of joining the EU.</p>
+        <p><img src="../images/c5/order_by_02.jpg" style="max-width:100% ;" height="auto" alt="Order By"></p>
+        <p></p>
+
+
+        <div class="note-117">
+
+            <p>Rows can be sorted in <b>ASCENDING</b> or <b>DESCENDING</b> order. </p>
+
+        </div>
+        <p></p>
+
+
+        <h3 id="order_by_mean_asc">Meaning of ASCENDING</h3>
+        <div class="note-95">
+            <p><b>Merriam-Webster Dictionary</b> </p>
+
+            <p><a href="https://www.merriam-webster.com/dictionary/ascending"
+                    target="_blank">https://www.merriam-webster.com/dictionary/ascending</a> </p>
+            <p>Here is the <b>Definition of Ascending</b> in <b>Merriam-Webster Dictionary</b>: </p>
+
+            <div class="note-95">
+                <p>
+                <ul>
+                    <li>rising or increasing to higher levels, values, or degrees</li>
+                    <li>mounting or sloping upward</li>
+                </ul>
+                </p>
+            </div>
+            <p></p>
+
+        </div>
+        <p></p>
+
+        <div>
+            <span class="note-bold-red-larger"></span>
+            <p style="font-size: larger;"> <span class="note-bold-red-larger">ASCENDING</span>
+                a Mountain &mdash;
+                Going <span class="note-bold-red-larger">UP</span> a Mountain: </p>
+            <p><img src="../images/c5/asc_01.jpg" style="max-width:100% ;" height="auto" alt="Ascending"></p>
+        </div>
+
+        <div class="note-97">
+            <p><b>Cambridge Dictionary</b> </p>
+
+            <p><a href="https://dictionary.cambridge.org/dictionary/english/ascending"
+                    target="_blank">https://dictionary.cambridge.org/dictionary/english/ascending</a> </p>
+
+            <p><b>Definition of Ascending</b> in <b>Cambridge Dictionary</b>: </p>
+            <div class="note-97">
+                <p>increasing in size or value</p>
+            </div>
+
+
+
+        </div>
+        <p></p>
+        <div class="note-117">
+            <span class="note-bold-red-larger"></span>
+            <p style="font-size: larger;">These Circles are in
+                <span class="note-bold-red-larger">ASCENDING ORDER</span>
+                of Size &mdash; they are
+                <span class="note-bold-red-larger">INCREASING</span> <b></b> in Size:
+            </p>
+            <p><img src="../images/c5/asc_03.jpg" style="max-width:100% ;" height="auto" alt="Ascending"></p>
+        </div>
+        <p></p>
+        <div class="note-97">
+            <p style="font-size: larger;">
+                We can say that;
+            <ul>
+                <li><span class="note-bold-red-larger">ASCENDING</span> is Going
+                    <span class="note-bold-red-larger">UP</span>
+                    <span style="font-size: 44px; font-weight: bold;"> &#8679;</span>
+                </li>
+                <li><span class="note-bold-red-larger">ASCENDING</span> is
+                    <span class="note-bold-red-larger">INCREASING</span> in Value or in Size
+                </li>
+            </ul>
+            </p>
+
+        </div>
+        <p></p>
+
+        <h3 id="order_by_mean_desc">Meaning of DESCENDING</h3>
+        <div class="note-95">
+
+            <p> <b>DESCENDING</b> is the
+                <span class="note-bold-red">OPPOSITE of ASCENDING</span>.
+            </p>
+            <p>Hence, <b>DESCENDING</b> is;</p>
+            <ul>
+                <li>going downwards</li>
+                <li>decreasing to lower levels or to lower values</li>
+                <li>decreasing in size or in value</li>
+            </ul>
+        </div>
+        <p></p>
+
+        <p></p>
+        <div class="note-95">
+            <span class="note-bold-red-larger"></span>
+            <p style="font-size: larger;">These beads are in
+                <span class="note-bold-red-larger">DESCENDING ORDER</span>
+                of Size &mdash;
+                they are <span class="note-bold-red-larger">DECREASING</span> <b></b> in Size:
+            </p>
+            <p><img src="../images/c5/desc_order_01.jpg" style="max-width:100% ;" height="auto" alt="descending"></p>
+        </div>
+        <p></p>
+
+        <p></p>
+        <div class="note-97">
+            <span class="note-bold-red-larger"></span>
+            <p style="font-size: larger;">Here is a <span class="note-bold-red-larger">DESCENDING</span>
+                elevator in a skyscraper.
+                It is going <span class="note-bold-red-larger">DOWN</span> from the
+                21<sup>st</sup> Floor.
+            </p>
+            <p><img src="desc_order_03.jpg" style="max-width:100% ;" height="auto" alt="descending"></p>
+        </div>
+        <p></p>
+
+        <div class="note-97">
+
+            <p> </p>
+            <p style="font-size: larger;">
+                We can say that;
+            <ul>
+                <li><span class="note-bold-red-larger">DESCENDING</span> is Going
+                    <span class="note-bold-red-larger">DOWN</span>
+                    <span style="font-size: 44px; font-weight: bold;"> &#8681;</span>
+                </li>
+                <li><span class="note-bold-red-larger">DESCENDING</span> is
+                    <span class="note-bold-red-larger">DECREASING</span> in Value or in Size
+                </li>
+            </ul>
+            </p>
+
+        </div>
+        <p></p>
+        <h3 id="order_by_cl_asc">ORDER BY ASCENDING</h3>
+        <div class="note-95">
+            <b></b>
+            <span class="note-bold-red-larger"></span>
+            <span class="note-bold-red"></span>
+            <p> </p>
+            <ul>
+                <li>Rows are sorted in <b>ASCENDING ORDER</b> by Default.</li>
+
+                <li>The Keyword for <b>ASCENDING</b> is <b>"ASC"</b>. </li>
+                <p>e.g. order by join_date asc</p>
+                <li><b>ASC</b> orders <b>NUMBER </b> columns from the
+                    <span class="note-bold-red-larger">LOWEST values FIRST</span>
+                    to the <b>HIGHEST values LAST</b>.
+                </li>
+                <li><b>ASC</b> orders <b>DATE </b> columns from the
+                    <span class="note-bold-red-larger">EARLIEST values FIRST</span>
+                    to the <b>LATEST values LAST</b>.
+                </li>
+                <li><b>ASC</b> orders <b>CHAR</b> and <b>VARCHAR</b> columns in
+                    <span class="note-bold-red-larger">Alphabetical Order</span>
+                    i.e. from <b>A</b> to <b>Z</b>.
+                </li>
+            </ul>
+
+
+            <p></p>
+        </div>
+        <p></p>
+        <div class="note-97">
+
+            <p> </p>
+            <p>What about <b>NULL</b> values?</p>
+            <p>If a column has a <b>NULL</b> value, how will it be ordered with <b>ASC</b>,
+                which is By Default?</p>
+            <ul>
+                <li><b>ASC</b> orders <b>NULL</b> values
+                    <span class="note-bold-red-larger">LAST</span>
+                    &mdash; as if the <b>NULL</b> values are <b>HIGHER</b> than
+                    any other value.
+                </li>
+                <li><b>ASC</b> orders <b>NULL</b> values
+                    <span class="note-bold-red-larger">LAST</span>
+                    &mdash; as if they are <b>INFINITY</b>
+                    <span style="font-size: 44px; font-weight: bold;"> &#8734;</span>
+                </li>
+
+            </ul>
+
+        </div>
+        <p></p>
+        <div>
+
+            <p> </p>
+            <p><b>NULL values are treated .. as if they are .. INFINITY </b> </p>
+            <p> <img src="../images/c5/infinity_01.jpg" style="max-width: 100%; height: auto;" alt="INFINITY Sign"></p>
+        </div>
+        <p></p>
+        <h3 id="order_by_cl_desc">ORDER BY DESCENDING</h3>
+        <div class="note-95">
+            <p> </p>
+            <ul>
+                <li>The Keyword for <b>DESCENDING</b> is <b>"DESC"</b>. </li>
+                <p>e.g. order by join_date desc</p>
+                <li><b>DESC</b> orders <b>NUMBER </b> columns from the
+                    <span class="note-bold-red-larger">HIGHEST values FIRST</span>
+                    to the <b>LOWEST values LAST</b>.
+                </li>
+                <li><b>DESC</b> orders <b>DATE </b> columns from the
+                    <span class="note-bold-red-larger">LATEST values FIRST</span>
+                    to the <b>EARLIEST values LAST</b>.
+                </li>
+                <li><b>DESC</b> orders <b>CHAR</b> and <b>VARCHAR</b> columns in
+                    <span class="note-bold-red-larger">REVERSE Alphabetical Order</span>
+                    i.e. from <b>Z</b> to <b>A</b>.
+                </li>
+                <li><b>DESC</b> orders <b>NULL</b> values
+                    <span class="note-bold-red-larger">FIRST</span>.
+                </li>
+
+            </ul>
+
+        </div>
+        <p></p>
+
+        <p>Below is the previous query sorted in <b>DESCENDING Order</b>
+            and the result set.</p>
+
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select	country_id
+,	country_name
+,	join_date
+,	capital
+,	currency_code
+,	currency_name
+from	countries
+where	status='M'
+order by join_date desc;
+</pre>
+            <p></p>
+
+        </div>
+
+        <p>Member Countries are now sorted in <b>DESCENDING Order </b>
+            of joining the EU.</p>
+        <p>Countries which joined the EU <b>LAST</b>,
+            are now the <b>FIRST</b> in the list.</p>
+        <p><img src="../images/c5/desc_order_04.jpg" style="max-width:100% ;" height="auto" alt="Order By DESC"></p>
+        <p></p>
+
+        <p></p>
+        <h3 id="order_by_cl_cn">Sorting by Column Order Number</h3>
+        <div class="note-95">
+
+            <p>The <span class="note-bold-red">Order of the Column</span>
+                in the SELECT list can be used
+                to SORT the rows.</p>
+
+        </div>
+        <p></p>
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select	country_id
+,	country_name
+,	join_date
+,	capital
+,	currency_code
+,	currency_name
+from	countries
+where	status='M'
+order by 3;
+</pre>
+            <p></p>
+
+        </div>
+        <p></p>
+        <div class="note-97">
+            <span class="note-bold-red"></span>
+            <p>In the SELECT Statement above,
+                the <span class="note-bold-red">Order of the Column</span> in
+                the SELECT list is used in the <b>ORDER BY</b> Clause.
+            </p>
+            <p> The <span class="note-bold-red">3<sup>rd</sup></span>
+                column is the
+                <b>JOIN_DATE</b>, hence the result set is
+                sorted in ascending order of JOIN_DATE.
+            </p>
+            <p>Although this is a convenient method for
+                SELECT Statements in ad-hoc reports,
+                it is NOT recommended in hard-copy programming. </p>
+        </div>
+        <p></p>
+        <div class="note-117">
+
+            <p> </p>
+            <p><img src="../images/c5/order_by_col_num_01.jpg" style="max-width:100% ;" height="auto" alt="Order By Column Number">
+            </p>
+
+        </div>
+        <p></p>
+        <h3 id="order_by_cl_ca">Sorting by Column Alias</h3>
+        <div class="note-95">
+
+            <p> The
+                <span class="note-bold-red">Column Alias </span>
+                in the SELECT list can be used to SORT the rows.
+            </p>
+        </div>
+        <p></p>
+        <p></p>
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select	country_id
+,	country_name
+,	gdp
+,	population
+,	round(gdp / population) gdp_per_capita
+,	gdp_pps
+from	countries
+where	status='M'
+order by gdp_per_capita;
+</pre>
+        </div>
+        <p></p>
+
+        <div class="note-97">
+            <span class="note-bold-red"></span>
+            <p>In the SELECT Statement above,
+                the alias <span class="note-bold-red">gdp_per_capita</span> is
+                given to the arithmetic expression
+                <span class="note-bold-red">round(gdp / population)</span>.
+            </p>
+            <span class="note-bold-red"></span>
+            <p>The rows are ordered by the alias
+                <span class="note-bold-red">gdp_per_capita</span>.
+            </p>
+            <span class="note-bold-red"></span>
+            <p><span class="note-bold-red">order by gdp_per_capita</span>
+            </p>
+            <p>Although, the keywords <b>ASC</b> or <b>DESC</b> are not used,
+                Default SORT Order is used. </p>
+            <p>As we have already seen,
+                the <span class="note-bold-red">Default SORT Order</span> is
+                <span class="note-bold-red">ASCENDING</span>.
+            </p>
+            <p> </p>
+            <p><img src="../images/c5/order_by_col_alias_01.jpg" style="max-width:100% ;" height="auto" alt="Order By Column Alias">
+            </p>
+
+        </div>
+        <p></p>
+
+        <h3 id="order_by_cl_mc">Sorting by Multiple Columns</h3>
+        <div class="note-95">
+
+            <p> </p>
+            <p>The SELECT Statement below,
+                SORTS / ORDERS the rows
+                <b>by the STATUS column</b> in
+                <span class="note-bold-red">ASCENDING Order by Default</span>,
+                and then within each STATUS Set, the rows are
+                SORTED / ORDERED BY in
+                <span class="note-bold-red">DESCENDING Order of GDP_PPS</span>.
+            </p>
+            <p>In our database, there are only three
+                values in the
+                <b>STATUS column</b>:
+            </p>
+            <p> <span class="note-bold-red">
+                    'C','M', and 'O'
+                </span> </p>
+            <p>'C' for CANDIDATE, 'M' for MEMBER,
+                and 'O' for OTHER. </p>
+        </div>
+        <p></p>
+        <p></p>
+        <div class="note-charcoal-a30-large">
+            <pre style="font-size: larger;">
+select	country_id
+,	country_name
+,	status
+,	gdp_pps
+from countries
+order by status,  gdp_pps desc;
+</pre>
+        </div>
+        <p></p>
+
+
+
+        <p></p>
+        <span class="note-bold-red"></span>
+        <p></p>
+        <div class="note-97">
+
+            <p>As seen in the Result Set below, the rows are
+                in <b>ASCENDING Order of STATUS</b>. </p>
+            <p>Since this column holds character values,
+                rows are sorted in alphabetical order. </p>
+            <p>Within each STATUS Set, i.e. within the set of rows,
+                that have the same STATUS Value,
+                the rows are then SORTED in
+                <span class="note-bold-red">
+                    DESCENDING Order of GDP_PPS
+                </span>
+                &mdash; <b>HIGHEST VALUES FIRST</b> and
+                <b>LOWEST VALUES LAST</b>.
+            </p>
+            <p> </p>
+
+        </div>
+        <p></p>
+        <p></p>
+        <div class="note-97">
+
+            <p>Since,
+                <span class="note-bold-red">
+                    NULLS come FIRST in a
+                    DESCENDING Sort
+                </span>,
+                the countries,
+                'India',
+                'China',
+                'Japan',
+                'USA',
+                'Russian Federation', and 'Iceland',
+                that have a <b>NULL value in their
+                    GDP_PPS column
+                </b>,
+                are displayed first within the set of
+                countries that have a
+                <b>STATUS value of 'O'</b>.
+
+            </p>
+
+        </div>
+        <p></p>
+
+        <div class="note-117">
+
+            <p> </p>
+            <p><img src="../images/c5/order_multi_01.jpg" style="max-width:100% ;" height="auto" alt="Order By Multiple Columns">
+                <br>
+                <img src="../images/c5/order_multi_02.jpg" style="max-width:100% ;" height="auto" alt="Order By Multiple Columns">
+            </p>
+
+        </div>
+        <p></p>
+        <h3 id="order_by_cl_q">Question on what we have just learned</h3>
+        <div class="note-95">
+
+            <p> </p>
+
+        </div>
+        <p></p>
+
+        <p></p>
+
+        <table>
+            <caption style="font-weight: bold;
+            font-size: x-large;">
+                Here is the Data in the table "T_SHIRTS"
+            </caption>
+            <tr>
+                <th>ID</th>
+                <th>COLOR </th>
+                <th>TYPE</th>
+                <th>STOCK LEVEL</th>
+                <th>PRICE</th>
+            </tr>
+
+            <tr>
+                <td>215</td>
+                <td>REDS</td>
+                <td>SHORT SLEEVE</td>
+                <td>128</td>
+                <td>400</td>
+            </tr>
+
+
+            <tr>
+                <td>140</td>
+                <td>WHITES</td>
+                <td>SLEEVELESS</td>
+                <td>256</td>
+                <td> </td>
+            </tr>
+
+
+            <tr>
+                <td>603</td>
+                <td>BROWNS</td>
+                <td>LONG SLEEVE</td>
+                <td>318</td>
+                <td>210</td>
+            </tr>
+
+
+            <tr>
+                <td>725</td>
+                <td>ROSES</td>
+                <td>LONG SLEEVE</td>
+                <td>1200</td>
+                <td>175</td>
+            </tr>
+
+
+            <tr>
+                <td>218</td>
+                <td>REDS</td>
+                <td>LONG SLEEVE</td>
+                <td>125</td>
+                <td>315</td>
+            </tr>
+
+
+            <tr>
+                <td>220</td>
+                <td>BLACKS</td>
+                <td>SHORT SLEEVE</td>
+                <td> </td>
+                <td>420</td>
+            </tr>
+
+            <tr>
+                <td>126</td>
+                <td>WHITES</td>
+                <td>SHORT SLEEVE</td>
+                <td>289</td>
+                <td> </td>
+            </tr>
+
+
+            <tr>
+                <td>751</td>
+                <td>ROSES</td>
+                <td>SLEEVELESS</td>
+                <td>200</td>
+                <td>100 </td>
+            </tr>
+        </table>
+        <p> </p>
+        <div class="note-97">
+
+            <p>Evaluate the following SELECT Statement. </p>
+            <p></p>
+<div class="note-charcoal-a30-large">
+<pre style="font-size: larger;">
+SELECT COLOR, TYPE
+FROM T_SHIRTS
+ORDER BY PRICE, STOCK_LEVEL;
+</pre>
+</div>
+            <p>Which of the statements below are TRUE? 
+                (Choose all that apply.) </p>
+            <p></p>
+<ol type="A">
+    <li>The <b>COLOR</b> value for the first two 
+    rows displayed is "WHITES".  </li>
+    <li>The <b>ID</b> value for the 
+        first row displayed is 220.</li>
+    <li>The <b>ID</b> values for the
+        last two rows displayed are 140 and 126.</li>
+    <li>The <b>COLOR</b> value for the first two 
+        rows displayed is "ROSES". </li>
+    <li>No row with an ID of 220 is displayed.</li>
+</ol>
+        </div>
+        <p></p>
+        <div class="note-117">
+
+            <p>There are two correct answers.  </p>
+            <p>I am glad you came this far in this text.</p>
+            <p>Here are some Beautiful Roses for you to enjoy.</p>
+            <p><img src="../images/c5/white_climb_rose_01.jpg" style="max-width:100% ;" height="auto" alt="White Roses">
+                <br>
+                <img src="../images/c5/pink_climb_rose_01.jpg" style="max-width:100% ;" height="auto" alt="Pink Roses">
+            </p>
+
+        </div>
+        <p></p>
+        <!--  -->
+
+        <h2 id="references">References</h2>
+
+
+
+        <div class="note-charcoal-a30">
+
+            <ul>
+
+                <li>Oracle&#174; Database, Database Concepts, 21c, F31733-04, August 2021</li>
+                <li>Oracle&#174; Database, 2 Day Developer's Guide, 21c, F32609-01, December 2020 </li>
+                <li>Oracle&#174; Database, SQL Language Reference, 21c F31301-07, March 2022</li>
+                <li>Oracle&#174; Database, Database Reference, 21c, F31274-15, August 2022</li>
+                <li>Oracle&#174; Database, Object-Relational Developer's Guide, 21c, F32263-01, December 2020</li>
+                <li>C.J. Date, An Introduction to Database Systems 7th Edition, Addison-Wesley ISBN 0-201-38590-2</li>
+                <li>Richard Barker, Case*Method, Entity Relationship Modelling, Addison-Wesley ISBN 0-201-41696-4</li>
+
+            </ul>
+        </div>
+
+        <div class="note-117">
+
+
+
+            <ul>
+                <li>ISBN 92-79-03653-X , How the European Union works: Booklet by EU Publications Office
+                </li>
+                <li>ISBN 978-92-824-2203-8, Information handbook of the Council of the European Union, DG Press, General
+                    Secretariat of the Council</li>
+
+                <li>European Union
+                    <p><a href="https://europa.eu/european-union/index_en" target="_blank">
+                            https://europa.eu/european-union/index_en</a> </p>
+
+                </li>
+
+                <li>European Council
+                    <p><a href="https://www.consilium.europa.eu/en/" target="_blank">
+                            https://www.consilium.europa.eu/en/</a>
+                    </p>
+                </li>
+                <li>European Parliament
+                    <p> <a href="https://www.europarl.europa.eu/portal/en" target="_blank">
+                            https://www.europarl.europa.eu/portal/en</a> </p>
+
+                </li>
+                <li>The Official Directory of the European Union (Who is Who)
+                    <p><a href="  https://op.europa.eu/en/web/who-is-who" target="_blank">
+                            https://op.europa.eu/en/web/who-is-who </a> </p>
+                </li>
+            </ul>
+        </div>
+        <p></p>
+        <img src="../images/c5/deu.png" style="max-width:100% ;" height="auto" alt="just me">
+        <p></p>
+</body>
+
+</html>
